@@ -121,19 +121,19 @@ export default {
   },
   computed: {
     bookCurrentLocation () {
-      return this.$store.getters.bookCurrentLocation
+      return this.$store.state.bookCurrentLocation
     },
     bookAvailable () {
-      return this.$store.getters.bookAvailable
+      return this.$store.state.bookAvailable
     },
     ifTitleAndMenuShow () {
-      return this.$store.getters.ifTitleAndMenuShow
+      return this.$store.state.ifTitleAndMenuShow
     },
     defaultFontSize () {
-      return this.$store.getters.defaultFontSize
+      return this.$store.state.defaultFontSize
     },
     defaultTheme () {
-      return this.$store.getters.defaultTheme
+      return this.$store.state.defaultTheme
     }
   },
   mounted () {

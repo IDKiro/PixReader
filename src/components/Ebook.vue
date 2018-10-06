@@ -235,16 +235,16 @@ export default {
   },
   computed: {
     ifTitleAndMenuShow () {
-      return this.$store.getters.ifTitleAndMenuShow
+      return this.$store.state.ifTitleAndMenuShow
     },
     bookmarks () {
-      return this.$store.getters.bookmarks
+      return this.$store.state.bookmarks
     },
     defaultFontSize () {
-      return this.$store.getters.defaultFontSize
+      return this.$store.state.defaultFontSize
     },
     defaultTheme () {
-      return this.$store.getters.defaultTheme
+      return this.$store.state.defaultTheme
     }
   }
 }

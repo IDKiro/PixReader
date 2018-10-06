@@ -84,7 +84,7 @@ export default {
       return paddingLR
     },
     bookList () {
-      return this.$store.getters.bookList
+      return this.$store.state.bookList
     }
   },
   mounted () {

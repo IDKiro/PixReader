@@ -58,13 +58,13 @@ export default {
   },
   computed: {
     navigation () {
-      return this.$store.getters.navigation
+      return this.$store.state.navigation
     },
     bookmarks () {
-      return this.$store.getters.bookmarks
+      return this.$store.state.bookmarks
     },
     bookAvailable () {
-      return this.$store.getters.bookAvailable
+      return this.$store.state.bookAvailable
     }
   }
 }

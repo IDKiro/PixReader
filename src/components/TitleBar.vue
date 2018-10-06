@@ -41,10 +41,10 @@ export default {
   },
   computed: {
     ifTitleAndMenuShow () {
-      return this.$store.getters.ifTitleAndMenuShow
+      return this.$store.state.ifTitleAndMenuShow
     },
     ifBookMarked () {
-      return this.$store.getters.ifBookMarked
+      return this.$store.state.ifBookMarked
     }
   }
 }
