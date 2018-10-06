@@ -3,7 +3,7 @@
 ## 设置全局样式
 本项目将样式文件夹 `styles` 全部放在`\src\asset\` 中：
 
-![](/imgs/readme/4.png)
+![](/docs/imgs/readme/4.png)
 
 ### 图标样式
 
