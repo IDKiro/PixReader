@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?d4704q');
+  src:  url('fonts/icomoon.eot?d4704q#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?d4704q') format('truetype'),
+    url('fonts/icomoon.woff?d4704q') format('woff'),
+    url('fonts/icomoon.svg?d4704q#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bookmark--on:before {
+  content: "\e904";
+}
+.icon-bookmark:before {
+  content: "\e903";
+}
+.icon-contents:before {
+  content: "\e902";
+}
+.icon-Progress-read:before {
+  content: "\e901";
+}
+.icon-more:before {
+  content: "\e900";
+}
+.icon-cart:before {
+  content: "\e93a";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-enlarge:before {
+  content: "\e989";
+}
+.icon-shrink:before {
+  content: "\e98a";
+}
+.icon-equalizer:before {
+  content: "\e992";
+}
+.icon-cog:before {
+  content: "\e994";
+}
+.icon-brightness-contrast:before {
+  content: "\e9d6";
+}
+.icon-arrow-left2:before {
+  content: "\ea40";
+}
+.icon-text-color:before {
+  content: "\ea6d";
+}
+.icon-share:before {
+  content: "\ea7d";
+}
