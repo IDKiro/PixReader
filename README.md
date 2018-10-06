@@ -95,7 +95,7 @@ vue init webpack my-project-name
 
 完成以后可以在 my-project-name 中看到以下文件：
 
-![](/img/readme/1.png)
+![](/docs/imgs/readme/1.png)
 
 此时可以进入 my-project-name 目录下
 
@@ -111,7 +111,7 @@ npm run dev
 
 在浏览器中访问 `localhost:8080` 即可看到：
 
-![](/img/readme/2.png)
+![](/docs/imgs/readme/2.png)
 
 这时应用已经搭建完毕，可以开始写程序了。
 
@@ -185,7 +185,7 @@ npm install node-sass --save-dev
 
 先看一下项目的文件目录，知道哪些文件和文件夹是供我们编辑的：
 
-![](/img/readme/1.png)
+![](/docs/imgs/readme/1.png)
 
 #### 文件夹
 
@@ -195,7 +195,7 @@ npm install node-sass --save-dev
 
 因为 `src` 是程序的本体，所以讲一下里面的文件结构：
 
-![](/img/readme/3.png)
+![](/docs/imgs/readme/3.png)
 
 `asset` 为资源文件夹，保存图片这类供程序调用的文件，也可以保存一些全局有效的样式。
 
@@ -288,7 +288,7 @@ Vue 从扩展名就可以看出，其是 Vue 项目的独有文件，并且也�
 
 生命周期也是 Vue 中很重要的概念，表示 Vue 的实例从创建到销毁的过程。
 
-![](/img/readme/lifecycle.png)
+![](/docs/imgs/readme/lifecycle.png)
 
 ## 编写项目前的准备
 
@@ -324,123 +324,22 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 生成图标组件后下载组件压缩包，如果需要在多台终端上开发，最好将压缩包文件放在云端，因为 IcoMoon 的免费版没有云端保存功能，但是可以导入项目。
 
-### 设置全局样式
+## 项目编写
 
-本项目将样式文件夹 `styles` 全部放在`\src\asset\` 中：
+项目的主体部分的开发笔记，分模块进行详细记录
 
-![](/img/readme/4.png)
+### [全局样式](/docs/styles.md)
 
-#### 图标样式
+### [路由](/docs/router.md)
 
-其中 `icon.css` 对应之前下载的图标组件的 `style.css`， `fonts` 则对应之前下载的图标组件的 `fonts`。
+### [状态管理](/docs/store.md)
 
-#### 全局样式
+### [Guide.vue: 首页（书架）](/docs/guide.md)
 
-`reset.scss` 文件用于减少浏览器的不同导致的样式差别，直接在复制一份到该目录下即可：
+### [Ebook: 电子书阅读器主界面](/docs/ebook.md)
 
-[https://meyerweb.com/eric/tools/css/reset/](https://meyerweb.com/eric/tools/css/reset/)
+### [MenuBar.vue: 菜单栏](/docs/menubar.md)
 
-这里为了字体的美观在 `reset.scss` 文件中添加了以下一段代码：
+### [TitleBar.vue: 标题栏](/docs/titlebar.md)
 
-```css
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","å¾®è½¯é›…é»‘",Arial,sans-serif;
-}
-```
-
-使用的 `font-family` 为 element-ui 推荐的字体列表：
-
-[http://element-cn.eleme.io/#/zh-CN/component/typography](http://element-cn.eleme.io/#/zh-CN/component/typography)
-
-`global.scss` 则为全局可用的样式表：
-
-```CSS
-/* 导入 `reset.scss` */
-@import "reset";
-/* 定义 `px2rem` 函数 */
-$fontSize : 36;
-@function px2rem($px) {
-  @return ($px / $fontSize) + rem;
-}
-/* 定义居中样式缩写 */
-@mixin center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* 设置图标默认样式 */
-.icon {
-  color: #555555;
-  font-size: px2rem(20);
-}
-```
-
-其中 `px2rem` 函数用于将 px 单位的大小转换为 rem 单位（1rem = 1倍根节点字体大小）的大小，查看本项目的 `App.vue` 可以看到增加了以下一段代码：
-
-```javascript
-// 动态调整根节点字体
-document.addEventListener('DOMContentLoaded', () => {
-  const html = document.querySelector('html')
-  let fontSize = window.innerWidth / 10
-  fontSize = fontSize > 48 ? 48 : fontSize
-  html.style.fontSize = fontSize + 'px'
-})
-```
-
-这段代码是为了根据屏幕的宽度动态调整根节点字体的大小，让不同屏幕宽度的设备都有较好的字体显示效果。但是其他元素如果直接用 px 为单位进行样式的设置，那么就会使得字体和元素的大小不成比例，所以在全局样式中提供了 `px2rem` 函数，使得样式和字体有较好的一致性。
-
-#### element-ui 主题
-
-element-ui 默认主题的颜色为蓝色，为了和项目颜色一致，需要改变 element-ui 主题的颜色，官方提供了在线工具：
-
-[https://elementui.github.io/theme-chalk-preview/#/zh-CN](https://elementui.github.io/theme-chalk-preview/#/zh-CN)
-
-将下载的压缩包解压后得到的文件放在 `theme` 文件夹即可。
-
-### 导入项目使用的库、组件和全局样式
-
-为了在项目中启用之前准备的库、组件和全局样式，需要编辑 `main.js` ，也就是项目入口文件。
-
-```javascript
-import Vue from 'vue' …
-
-Vue.config.productionTip = false
-Vue.use(vuescroll)
-Vue.use(ElementUI)
-
-// 设置滚动条的默认颜色
-Vue.prototype.$vuescrollConfig = {
-  bar: {
-    background: '#ccc'
-  }
-}
-
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  template: '<App/>',
-  render: h => h(App)
-})
-```
-
-- `import`: 导入库和样式表
-- `Vue.use()`: 从库中注册组件供项目使用
-- `new Vue()`: 使用包含的组件创建实例
-
-## 项目组件的编写
-
-TODO: 详细解释各组件的功能和相应的代码细节
-
-### Guide.vue: 首页（书架）
-
-### Ebook: 电子书阅读器主界面
-
-### MenuBar.vue: 菜单栏
-
-### TitleBar.vue: 标题栏
-
-### Content.vue: 目录
+### [Content.vue: 目录](/docs/content.md)
