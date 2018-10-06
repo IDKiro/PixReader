@@ -330,7 +330,7 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ### [全局样式](/docs/styles.md)
 
-### [路由](/docs/router.md)
+### [路由管理器](/docs/router.md)
 
 ### [状态管理](/docs/store.md)
 

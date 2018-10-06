@@ -8,7 +8,8 @@
 export default {
   name: 'App'
 }
-// 动态调整根节点字体
+
+// 动态调整根节点字体大小
 document.addEventListener('DOMContentLoaded', () => {
   const html = document.querySelector('html')
   let fontSize = window.innerWidth / 10

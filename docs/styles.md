@@ -3,7 +3,7 @@
 ## 设置全局样式
 本项目将样式文件夹 `styles` 全部放在`\src\asset\` 中：
 
-![](../img/readme/4.png)
+![](/imgs/readme/4.png)
 
 ### 图标样式
 
@@ -34,17 +34,20 @@ html, body {
 ```CSS
 /* 导入 `reset.scss` */
 @import "reset";
+
 /* 定义 `px2rem` 函数 */
 $fontSize : 36;
 @function px2rem($px) {
   @return ($px / $fontSize) + rem;
 }
+
 /* 定义居中样式缩写 */
 @mixin center() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* 设置图标默认样式 */
 .icon {
   color: #555555;

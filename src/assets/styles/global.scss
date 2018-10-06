@@ -1,16 +1,19 @@
 /* 导入 `reset.scss` */
 @import "reset";
+
 /* 定义 `px2rem` 函数 */
 $fontSize : 36;
 @function px2rem($px) {
   @return ($px / $fontSize) + rem;
 }
+
 /* 定义居中样式缩写 */
 @mixin center() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* 设置图标默认样式 */
 .icon {
   color: #555555;
