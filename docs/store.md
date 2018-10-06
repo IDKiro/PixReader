@@ -79,11 +79,13 @@ export default getters
 
 `Guide.vue` 中便使用 `this.$store.getters.bookList` 获取了派生出的去重 `bookList`：
 
+```javascript
 computed: {
   bookList () {
     return this.$store.getters.bookList
   }
 }
+```
 
 ## Mutation
 
