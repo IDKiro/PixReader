@@ -2,7 +2,7 @@
 
 Vue Router 是 Vue.js 官方的路由管理器。
 
-`router` 文件夹下的 `index.js` 文件为路由组件的入口文件：
+`router` 文件夹下的 `index.js` 文件为路由管理器组件的入口文件：
 
 ```javascript
 import Vue from 'vue'
@@ -35,7 +35,7 @@ export default new Router({
 
 ## 项目中的路由使用
 
-本项目涉及到路由的部分较少，分别为选择书籍后转到阅读页面(EBook组件)，在标题栏中点击返回按钮返回书架页面(Guide组件).
+本项目涉及到路由的部分较少，分别为选择书籍后转到阅读页面(Ebook组件)，在标题栏中点击返回按钮返回书架页面(Guide组件).
 
 `TitleBar.vue` 中：
 

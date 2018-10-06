@@ -245,7 +245,7 @@ new Vue({
 
 `index.html` 中的 `id="app"` 与 `mian.js` 中的 `el: '#app'` 的相对应，两者会在实例创建时进行替换（查看[生命周期图示](#lifecycle)），相当于创建的实例会嵌入到 `index.html` 中。
 
-再次看 `mian.js` 中的这段代码，其中 `components: { App }` 指定了该入口文件包含的组件，这个组件也就是整个应用的总组件 `App.vue`。
+再次看 `mian.js` 中的这段代码，其中 `components: { App }` 指定了该入口文件包含的组件，这个组件也就是整个应用的总组件 `App.vue`，其通过 `export` 进行暴露供其他组件调用。
 
 这样，通过编辑 `App.vue` 以及该文件包含的子组件便可编辑页面显示的实际内容。
 
@@ -330,7 +330,7 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ### [全局样式](/docs/styles.md)
 
-### [导入项目使用的库、组件和全局样式](/docs/import.md)
+### [导入库、组件和全局样式](/docs/import.md)
 
 ### [路由管理器](/docs/router.md)
 
