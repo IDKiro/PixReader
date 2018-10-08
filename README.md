@@ -324,9 +324,9 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 生成图标组件后下载组件压缩包，如果需要在多台终端上开发，最好将压缩包文件放在云端，因为 IcoMoon 的免费版没有云端保存功能，但是可以导入项目。
 
-## 项目编写
+## 项目主体
 
-项目的主体部分的开发笔记，分模块进行详细记录
+项目主体部分的开发笔记
 
 ### [全局样式](/docs/styles.md)
 
@@ -335,6 +335,10 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 ### [路由管理器](/docs/router.md)
 
 ### [状态管理](/docs/store.md)
+
+## 模块
+
+TODO: 项目各模块的开发笔记
 
 ### [Guide.vue: 首页（书架）](/docs/guide.md)
 
