@@ -213,8 +213,6 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ## 项目主体
 
-项目主体部分的开发笔记
-
 ### [Vue 项目简述](/docs/whatsvue.md)
 
 ### [全局样式](/docs/styles.md)
