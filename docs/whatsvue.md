@@ -119,13 +119,101 @@ Vue 从扩展名就可以看出，其是 Vue 项目的独有文件，并且也�
 - `v-show`: 条件渲染，先渲染后决定是否显示
 - `v-for`: 基于数据渲染多个同类元素
 
-## Vue 的数据
+## Vue 的数据和选项
 
+### data
 
+组件的数据对象，能够响应数据变化，在实例中可以定义为：
+
+```javascript
+data: {
+  message: 'Hello Vue!'
+}
+```
+
+当组件作为模块进行编程时，`data` 的对象必须是函数：
+
+```javascript
+data: function () {
+  return { a: 1 }
+}
+```
+
+这是为了防止数据污染，此时 `return` 的对象则为实际调用的 `data` 对象。
+
+### props
+
+用于接收父组件传过来的数据，可以是对象或者数组，一般可以写成如下格式：
+
+```javascript
+props: {
+  height: Number,
+  age: {
+    type: Number,
+    default: 0,
+    required: true,
+    validator: function (value) {
+      return value >= 0
+    }
+  }
+}
+```
+
+写成对象时一般会添加类型监测。
+
+父组件向子组件进行传值则需要用 `v-bind` 进行属性的绑定：
+
+```html
+<div
+  :height="val"
+  :age="obj"
+></div>
+```
+
+### methods
+
+`methods` 是供实例调用的方法，方法中的 `this` 自动绑定为 Vue 实例，绝大部分的函数都写在 `methods` 中。
+
+```javascript
+methods: {
+  plus () {
+    this.a++
+  }
+}
+```
+
+子组件可以通过 `$emit( eventName, […args] )` 调用父组件的方法，父组件需要使用 `v-on` 监听子组件触发的事件：
+
+```javascript
+this.$emit('welcome')
+```
+
+```html
+<div id="emit-example-simple">
+  <welcome-button v-on:welcome="sayHi"></welcome-button>
+</div>
+```
+
+### computed
+
+计算属性中的属性可以在其被调用时返回所需的属性值，相当于一个依赖于其他属性的 `data`。
+
+以下代码相当于当有调用 `reversedMessage` 这个属性的时候，返回一个反转字符串的值：
+
+```javascript
+computed: {
+  reversedMessage: function () {
+    return this.message.split('').reverse().join('')
+  }
+}
+```
+
+方法虽然也可以做到相同的效果，但是计算属性会进行缓存，只有在依赖属性被更新的时才触发属性内的函数。
 
 <span id="lifecycle"></span>
-## 生命周期
+## Vue 的生命周期
 
-生命周期也是 Vue 中很重要的概念，表示 Vue 的实例从创建到销毁的过程。
+生命周期也是 Vue 中很重要的概念，表示 Vue 的实例从创建到销毁的过程，每个生命周期的阶段都可以执行一个钩子函数。
 
-![](/docs/imgs/readme/lifecycle.png)
+![](/docs/imgs/readme/lifecycle.jpg)
+
