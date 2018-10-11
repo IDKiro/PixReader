@@ -111,6 +111,12 @@ export default {
       this.setTheme(this.defaultTheme)
       // 加载目录和书签并开始生成定位
       this.book.ready.then(() => {
+        // 保存电子书的封面
+        this.book.loaded.metadata.then(() => {
+          this.book.archive.getBase64(this.book.cover).then(value => {
+            localStorage.setItem(localStorage.getItem('defaultBook') + 'cover', value)
+          })
+        })
         this.$store.commit('openNavigation', this.book.navigation)
         if (localStorage.getItem(localStorage.getItem('defaultBook'))) {
           this.$store.commit('setBookmarks', JSON.parse(localStorage.getItem(localStorage.getItem('defaultBook'))))

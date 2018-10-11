@@ -6,16 +6,19 @@
           <div class="book-title" v-show="!ifCoverExist[index]">
             {{bookList[index]}}
           </div>
-          <img :src="'/static/cover/'+bookList[index]+'.jpg'" width="100%" height="100%" v-show="ifCoverExist[index]">
+          <img :src="loadCover(index)" width="100%" height="100%" v-show="ifCoverExist[index]">
         </div>
       </div>
       <div class="book-wrapper" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
         <el-upload
           class="uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          :multiple="false"
+          :action="actionPath"
+          :data="postData"
           :show-file-list="false"
           :on-success="handleUploadSuccess"
-          :before-upload="beforeUpload"> <!-- TODO: 上传文件和后台对接-->
+          :on-error="handleUploadError"
+          :before-upload="beforeUpload">
           <i class="el-icon-plus uploader-icon"></i>
         </el-upload>
       </div>
@@ -24,7 +27,6 @@
 </template>
 
 <script>
-import Epub from 'epubjs'
 import TitleBar from './TitleBar'
 
 export default {
@@ -33,45 +35,62 @@ export default {
   data () {
     return {
       ifCoverExist: [],
-      imageUrl: ''
+      imageUrl: '',
+      actionPath: 'http://upload.qiniup.com/',
+      postData: {
+        // http://jsfiddle.net/6ht3smzd/ 生成
+        token: '5sFhEbE9tpcKk6IME0LgegxeEZ5ZmdyAcWJdaT3A:l9pPjtKso14aB5CfwrPZ5TkncjU=:eyJzY29wZSI6ImVib29rLXJlYWRlciIsImRlYWRsaW5lIjoxNTQ3MDEzNDg0fQ==',
+        key: ''
+      }
     }
   },
   methods: {
     openBook (index) {
-      localStorage.setItem('defaultBook', '/static/library/' + this.bookList[index] + '.epub')
+      localStorage.setItem('defaultBook', 'http://pgeycpcdk.bkt.clouddn.com/' + this.bookList[index] + '.epub')
       this.$router.push('/ebook')
     },
-    // TODO: 上传文件时解析封面并单独保存
-    loadCover () {
-      this.bookList.forEach((book, index) => {
-        this.book = new Epub('/static/library/' + book + '.epub')
-        this.book.ready.then(() => {
-          this.book.loaded.metadata.then(() => {
-            this.book.archive.getBase64(this.book.cover).then(value => {
-              console.log(value)
-            })
-          })
-        })
+    handleUploadError () {
+      this.$message({
+        message: '上传失败，请重试~',
+        center: true,
+        type: 'warning'
       })
     },
-    // TODO: 上传成功后的相关操作
     handleUploadSuccess (res, file) {
-      console.log(file)
-      this.loadCover()
+      this.$message({
+        message: '上传成功！',
+        center: true,
+        type: 'success'
+      })
+      // 将电子书加入书籍列表
+      localStorage.setItem('defaultBook', 'http://pgeycpcdk.bkt.clouddn.com/' + file.name)
+      // 去除文件名后缀
+      let pattern = /\.{1}[a-z]{1,}$/
+      let bookName = file.name.slice(0, pattern.exec(file.name).index)
+      if (localStorage.getItem('booklist')) {
+        let bookListTemp = JSON.parse(localStorage.getItem('booklist'))
+        bookListTemp.push(bookName)
+        localStorage.setItem('booklist', JSON.stringify(bookListTemp))
+      } else {
+        let bookListTemp = [bookName]
+        localStorage.setItem('booklist', JSON.stringify(bookListTemp))
+      }
+      // 打开上传成功的电子书
+      this.$router.push('/ebook')
     },
     beforeUpload (file) {
-      this.$message.error({
-        message: '暂不支持用户上传文件!',
-        center: true
-      })
+      this.postData.key = file.name
       const isEpub = file.type === 'application/epub+zip'
       if (!isEpub) {
         this.$message({
-          message: '现版本只支持 epub 格式!',
+          message: '现版本只支持 epub 格式！',
           center: true
         })
       }
       return isEpub
+    },
+    loadCover (index) {
+      return localStorage.getItem('http://pgeycpcdk.bkt.clouddn.com/' + this.bookList[index] + '.epub' + 'cover')
     }
   },
   computed: {
@@ -80,39 +99,28 @@ export default {
       let fontSize = window.innerWidth / 10
       fontSize = fontSize > 48 ? 48 : fontSize
       const bookLineNum = Math.floor((window.innerWidth * 36 / fontSize - 20) / 140)
-      const paddingLR = ((window.innerWidth / fontSize - 20 / 36) / bookLineNum - 140 / 36) / 2 + 10 / 36
-      return paddingLR
+      return ((window.innerWidth / fontSize - 20 / 36) / bookLineNum - 140 / 36) / 2 + 10 / 36
     },
     bookList () {
       return this.$store.getters.bookList
     }
   },
   mounted () {
-    // TODO: 读取文件夹内的电子书列表
-    this.$store.commit('setBookList',
-      ['我的青春恋爱物语果然有问题01',
-        '我的青春恋爱物语果然有问题02',
-        '我的青春恋爱物语果然有问题03',
-        '我的青春恋爱物语果然有问题04',
-        '我的青春恋爱物语果然有问题05',
-        '我的青春恋爱物语果然有问题06',
-        '我的青春恋爱物语果然有问题07',
-        '我的青春恋爱物语果然有问题08',
-        '我的青春恋爱物语果然有问题09',
-        '我的青春恋爱物语果然有问题10',
-        '我的青春恋爱物语果然有问题11',
-        '我的青春恋爱物语果然有问题12'])
-    this.bookList.forEach((book, index) => {
-      let img = new Image()
-      img.src = '/static/cover/' + book + '.jpg'
-      img.onload = () => {
-        if (img.width > 0 && img.height > 0) {
+    if (localStorage.getItem('booklist')) {
+      this.$store.commit('setBookList', JSON.parse(localStorage.getItem('booklist')))
+    } else {
+      this.$store.commit('setBookList', undefined)
+    }
+    if (this.bookList) {
+      this.bookList.forEach((book, index) => {
+        let img = localStorage.getItem('http://pgeycpcdk.bkt.clouddn.com/' + this.bookList[index] + '.epub' + 'cover')
+        if (img) {
           this.$set(this.ifCoverExist, index, true)
         } else {
           this.$set(this.ifCoverExist, index, false)
         }
-      }
-    })
+      })
+    }
   }
 }
 </script>
@@ -122,7 +130,6 @@ export default {
 
   .guide {
     position: relative;
-    @include center;
     .book-shelf {
       display: flex;
       flex-wrap: wrap;
