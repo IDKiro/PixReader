@@ -57,6 +57,8 @@ export default {
       })
     },
     handleUploadSuccess (res, file) {
+      // 清空凭证中上传文件的名称
+      this.postData.key = ''
       this.$message({
         message: '上传成功！',
         center: true,
@@ -84,6 +86,11 @@ export default {
       if (!isEpub) {
         this.$message({
           message: '现版本只支持 epub 格式！',
+          center: true
+        })
+      } else {
+        this.$message({
+          message: '上传文件中...',
           center: true
         })
       }
