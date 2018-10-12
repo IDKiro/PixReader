@@ -216,4 +216,3 @@ computed: {
 生命周期也是 Vue 中很重要的概念，表示 Vue 的实例从创建到销毁的过程，每个生命周期的阶段都可以执行一个钩子函数。
 
 ![](/docs/imgs/readme/lifecycle.jpg)
-

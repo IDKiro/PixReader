@@ -62,13 +62,13 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 ### 使用vue-cli和webpack模板搭建应用
 
-没有开发工具倾向的同学可以使用WebStorm，可以比较轻松地进行搭建。WebStorm学生可以获得免费教育授权。
+WebStorm 可以比较轻松地搭建模板应用，并且学生可以获得 WebStorm 的免费教育授权。
 
 WebStorm 下载地址：[http://www.jetbrains.com/webstorm/download/](http://www.jetbrains.com/webstorm/download/)
 
-英文不好的可以使用汉化包：[https://github.com/pingfangx/TranslatorX](https://github.com/pingfangx/TranslatorX)
+汉化包：[https://github.com/pingfangx/TranslatorX](https://github.com/pingfangx/TranslatorX)
 
-如果使用 vscod e等文本编辑器，可以使用命令搭建：
+如果使用 vscode 等文本编辑器，可以使用命令搭建：
 
 ```bash
 vue init webpack my-project-name
