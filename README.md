@@ -229,8 +229,8 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ### [Ebook: 电子书阅读器主界面](/docs/ebook.md)
 
-### [MenuBar.vue: 菜单栏](/docs/menubar.md)
-
 ### [TitleBar.vue: 标题栏](/docs/titlebar.md)
+
+### [MenuBar.vue: 菜单栏](/docs/menubar.md)
 
 ### [Content.vue: 目录](/docs/content.md)
