@@ -118,6 +118,7 @@ export default {
           })
         })
         this.$store.commit('openNavigation', this.book.navigation)
+        // 加载电子书保存的书签
         if (localStorage.getItem(localStorage.getItem('defaultBook'))) {
           this.$store.commit('setBookmarks', JSON.parse(localStorage.getItem(localStorage.getItem('defaultBook'))))
         } else {
