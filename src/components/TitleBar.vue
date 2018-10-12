@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-down">
-    <div class="title-wrapper" v-show="ifTitleAndMenuShow" :class="{'hideBoxShadow': hideTitleBoxShadow}">
+    <div class="title-wrapper" v-show="ifTitleAndMenuShow">
       <div class="left">
         <div class="icon-wrapper" @click="back">
           <span class="icon-arrow-left2 icon"></span>
@@ -21,12 +21,6 @@
 <script>
 export default {
   name: 'TitleBar',
-  props: {
-    hideTitleBoxShadow: {
-      type: Boolean,
-      default: false
-    }
-  },
   methods: {
     back () {
       this.$store.commit('setTitleAndMenuShow', false)
