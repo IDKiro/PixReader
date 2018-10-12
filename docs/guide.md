@@ -49,11 +49,9 @@ Element UI 的上传组件为 `el-upload`，api 参考官方中文文档：
 
 - `multiple`: 是否允许选择多个文件上传
 - `action`: 必选参数，上传的地址
-- `data`: 上传时附带的额外参数，上传到七牛云需要指定 token
+- `data`: 上传时附带的额外参数，上传到七牛云需要指定 token，也就是上传的凭证
 - `show-file-list`: 是否显示已上传文件列表
 - `on-success``on-error``before-upload`: 文件上传成功\上传失败\上传前时调用的钩子函数
-
-组件内包裹有一个 + 的图标，通过 CSS 来调整显示。
 
 ```html
 <el-upload
