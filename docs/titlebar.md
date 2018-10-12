@@ -1,4 +1,4 @@
-# MenuBar.vue: 菜单栏
+# TitleBar.vue: 标题栏
 
 电子书阅读器主界面的标题栏的实现。
 
