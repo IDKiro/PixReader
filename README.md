@@ -1,4 +1,4 @@
-# Vue.js 入门学习笔记：电子书阅读器
+# 基于 Vue.js 的 ePub 电子书阅读器
 
 用于记录学习 Vue.js 并开发电子书阅读器的过程。
 
@@ -233,4 +233,4 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ### [MenuBar.vue: 菜单栏](/docs/menubar.md)
 
-### [Content.vue: 目录](/docs/content.md)
+### [Content.vue: 目录和书签](/docs/content.md)
