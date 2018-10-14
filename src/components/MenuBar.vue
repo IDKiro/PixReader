@@ -240,7 +240,7 @@ export default {
           color: #ccc;
           @include center;
           &.selected {
-          color: #555555;
+            color: #555555;
           }
         }
       }
