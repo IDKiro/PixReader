@@ -26,7 +26,7 @@ paddingLeftAndRight () {
 <img :src="loadCover(index)" width="100%" height="100%" v-show="ifCoverExist[index]">
 ```
 
-## 上传功能的实现
+## 上传功能的实现（已不可用，更换为自建 minio 对象存储）
 
 本项目上传功能的实现基于 Element UI 和七牛云的对象存储服务，七牛云对象存储的上传策略可以参考：
 
