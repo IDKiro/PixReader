@@ -2,9 +2,9 @@
 
 用于记录学习 Vue.js 并开发电子书阅读器的过程。
 
-初期参考教程：[https://www.imooc.com/learn/1038](https://www.imooc.com/learn/1038)
-
 Demo：[http://book.idkiro.xyz/](http://book.idkiro.xyz/)
+
+Update 1: 七牛云对象存储部分已不可用，更换为 minio
 
 ## 相关框架和库的文档
 
