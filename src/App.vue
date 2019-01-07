@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ebook v-if="ifShowBook"/>
+    <guide v-show="!ifShowBook"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Guide from './Guide'
+import Ebook from './Ebook'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: 'App',
+  components: {Guide, Ebook},
+  computed: {
+    ifShowBook () {
+      return this.$store.state.ifShowBook
+    }
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const html = document.querySelector('html')
+  let fontSize = window.innerWidth / 10
+  fontSize = fontSize > 48 ? 48 : fontSize
+  html.style.fontSize = fontSize + 'px'
+})
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  html, body, pre, code, kbd, samp {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,sans-serif;
+  }
+  #app {
+  }
 </style>

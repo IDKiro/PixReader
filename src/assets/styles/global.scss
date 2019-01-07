@@ -1,0 +1,17 @@
+@import "reset";
+
+$fontSize : 36;
+@function px2rem($px) {
+  @return ($px / $fontSize) + rem;
+}
+
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  color: #555555;
+  font-size: px2rem(20);
+}

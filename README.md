@@ -1,29 +1,40 @@
-# pixreader
+# PixReader
 
-## Project setup
+[简体中文](./docs/README-zh.md)
+
+> This app is under development, you can try the old [demo[CN]](http://book.idkiro.xyz/) first, and there is the [notebook[CN]](https://github.com/IDKiro/ebook-reader-vue).
+
+## Screenshot
+
+![](./docs/imgs/demo.gif)
+
+## Usage
+
+The current version only supports [minio](https://github.com/minio/minio)。
+
+Enter the following command to build your private minio OSS on your server.
+
+Use docker:
+
 ```
-yarn install
+docker run -p 9000:9000 --name minio1 \
+  -e "MINIO_ACCESS_KEY=username" \
+  -e "MINIO_SECRET_KEY=password" \
+  -v /mnt/data:/data \
+  -v /mnt/config:/root/.minio \
+  minio/minio server /data
 ```
 
-### Compiles and hot-reloads for development
+Or binary:
+
 ```
-yarn run serve
+wget https://dl.minio.io/server/minio/release/linux-amd64/minio
+chmod +x minio
+export MINIO_ACCESS_KEY=username
+export MINIO_SECRET_KEY=password
+(./minio server ./data &)
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+Open `address: port` to access minio. 
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Now you need to create a bucket and modify the permissions manually.
