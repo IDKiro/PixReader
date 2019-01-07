@@ -7,7 +7,7 @@
       <v-card-actions>
         <v-form class="main" lazy-validation>
           <v-text-field class="setting-item" v-for="(item, index) in server" :key="index"
-            v-model="server[index].value" :rules="server[index].rule" :label="server[index].name"
+            v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" :type="server[index].type"
             solo required></v-text-field>
           <v-switch class="setting-item" color="grey darken-4" :label="useSSL.name" v-model="useSSL.value"></v-switch>
           <v-btn @click="apply">
@@ -27,11 +27,11 @@ export default {
   data () {
     return {
       server: {
-        endPoint: {value: null, name: this.$t('server.endPoint'), rule:[]},
-        port: {value: null, name: this.$t('server.port'), rule:[]},
-        accessKey: {value: null, name: this.$t('server.accessKey'), rule:[]},
-        secretKey: {value: null, name: this.$t('server.secretKey'), rule:[]},
-        bucketName: {value: null, name: this.$t('server.bucketName'), rule:[]}
+        endPoint: {value: null, name: this.$t('server.endPoint'), type: 'text', rule:[]},
+        port: {value: null, name: this.$t('server.port'), type: 'text', rule:[]},
+        accessKey: {value: null, name: this.$t('server.accessKey'), type: 'text', rule:[]},
+        secretKey: {value: null, name: this.$t('server.secretKey'), type: 'password', rule:[]},
+        bucketName: {value: null, name: this.$t('server.bucketName'), type: 'text', rule:[]}
       },
       useSSL: {value: false, name: this.$t('server.useSSL'), rule:[]},
       iconShow: 0
