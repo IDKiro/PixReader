@@ -1,6 +1,17 @@
 # PixReader
 
-> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)，如果有需要，这是前期开发的[笔记](https://github.com/IDKiro/ebook-reader-vue)。
+> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)，如果有需要，这是前期开发的[笔记](/docs/notebook/README.md)。
+
+> 这里提供可用于测试的设置：
+
+```
+服务器地址: 176.122.140.215
+端口: 9000  
+用户名: minio
+密码: miniokey
+文件夹: upload
+开启SSL: false
+```
 
 ## 应用截图
 

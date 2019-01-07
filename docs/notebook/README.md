@@ -213,24 +213,24 @@ IcoMoon: [https://icomoon.io/app/](https://icomoon.io/app/)
 
 ## 项目主体
 
-### [Vue 项目简述](/docs/whatsvue.md)
+### [Vue 项目简述](/docs/notebook/whatsvue.md)
 
-### [全局样式](/docs/styles.md)
+### [全局样式](/docs/notebook/styles.md)
 
-### [导入库、组件和全局样式](/docs/import.md)
+### [导入库、组件和全局样式](/docs/notebook/import.md)
 
-### [路由管理器](/docs/router.md)
+### [路由管理器](/docs/notebook/router.md)
 
-### [状态管理](/docs/store.md)
+### [状态管理](/docs/notebook/store.md)
 
 ## 模块
 
-### [Guide.vue: 首页（书架）](/docs/guide.md)
+### [Guide.vue: 首页（书架）](/docs/notebook/guide.md)
 
-### [Ebook: 电子书阅读器主界面](/docs/ebook.md)
+### [Ebook: 电子书阅读器主界面](/docs/notebook/ebook.md)
 
-### [TitleBar.vue: 标题栏](/docs/titlebar.md)
+### [TitleBar.vue: 标题栏](/docs/notebook/titlebar.md)
 
-### [MenuBar.vue: 菜单栏](/docs/menubar.md)
+### [MenuBar.vue: 菜单栏](/docs/notebook/menubar.md)
 
-### [Content.vue: 目录和书签](/docs/content.md)
+### [Content.vue: 目录和书签](/docs/notebook/content.md)

@@ -2,7 +2,18 @@
 
 [简体中文](./docs/README-zh.md)
 
-> This app is under development, you can try the old [demo[CN]](http://book.idkiro.xyz/) first, and there is the [notebook[CN]](https://github.com/IDKiro/ebook-reader-vue).
+> This app is under development, you can try the old [demo[CN]](http://book.idkiro.xyz/) first, and there is the [notebook[CN]](/docs/notebook/README.md).
+
+> If you want to use this demo, you can use the settings as follow:
+
+```
+Address: 176.122.140.215
+port: 9000  
+Access Key: minio
+Secret Key: miniokey
+Bucket Name: upload
+Use SSL: false
+```
 
 ## Screenshot
 
