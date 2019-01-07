@@ -4,7 +4,8 @@ module.exports = {
     uploadMessage: 'Click or Drag Files to Upload',
     localMessage: 'Click or Drag to Open Local Book',
     loading: 'Loading...',
-    wait4mark: 'You have not added bookmarks yet~'
+    wait4mark: 'You have not added bookmarks yet~',
+    bucket: 'Bucket'
   },
   menu: {
     upload: 'UPLOAD',
@@ -19,7 +20,8 @@ module.exports = {
     port: 'Port',
     accessKey: 'Access Key',
     secretKey: 'Secret Key',
-    bucketName: 'Bucket Name'
+    bucketName: 'Bucket Name',
+    useSSL: 'Use SSL'
   },
   theme: {
     default: 'Default',

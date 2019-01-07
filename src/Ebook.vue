@@ -44,10 +44,10 @@ export default {
     return {
       bookReady: false,
       themeList: [
-        {name: this.$t("theme.default"), style: {body: {'color': '#272822', 'background': '#fff'}}},
-        {name: this.$t("theme.eye"), style: {body: {'color': '#272822', 'background': '#c7edcc'}}},
-        {name: this.$t("theme.night"), style: {body: {'color': '#F8F8F2', 'background': '#272822'}}},
-        {name: this.$t("theme.paper"), style: {body: {'color': '#272822', 'background': '#caad75'}}}
+        {name: this.$t('theme.default'), style: {body: {'color': '#272822', 'background': '#fff'}}},
+        {name: this.$t('theme.eye'), style: {body: {'color': '#272822', 'background': '#c7edcc'}}},
+        {name: this.$t('theme.night'), style: {body: {'color': '#F8F8F2', 'background': '#272822'}}},
+        {name: this.$t('theme.paper'), style: {body: {'color': '#272822', 'background': '#caad75'}}}
       ],
       fontSizeList: [
         { fontSize: 12 },
@@ -246,7 +246,7 @@ export default {
       return parseInt(localStorage.getItem('port'))
     },
     useSSL () {
-      return false
+      return localStorage.getItem('useSSL')
     },
     accessKey () {
       return localStorage.getItem('accessKey')

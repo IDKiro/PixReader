@@ -45,7 +45,7 @@
                     ref="progress">
           </div>
           <div class="text-wrapper">
-            <span>{{bookAvailable ? progress + '%' : $t("default.loading")}}</span>
+            <span>{{bookAvailable ? progress + '%' : $t('default.loading')}}</span>
           </div>
         </div>
       </div>

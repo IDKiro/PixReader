@@ -2,13 +2,16 @@
   <div class="setting-wrapper">
     <v-card class="setting">
       <v-toolbar>
-        <v-toolbar-title>{{$t("setting.server")}}</v-toolbar-title>
+        <v-toolbar-title>{{$t('setting.server')}}</v-toolbar-title>
       </v-toolbar>
       <v-card-actions>
         <v-form class="main" lazy-validation>
-          <v-text-field class="setting-item" v-for="(item, index) in server" :key="index" v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" solo required></v-text-field>
+          <v-text-field class="setting-item" v-for="(item, index) in server" :key="index"
+            v-model="server[index].value" :rules="server[index].rule" :label="server[index].name"
+            solo required></v-text-field>
+          <v-switch class="setting-item" color="grey darken-4" :label="useSSL.name" v-model="useSSL.value"></v-switch>
           <v-btn @click="apply">
-            <div v-show="iconShow === 0">{{$t("default.apply")}}</div>
+            <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
             <span class="icon-correct icon" v-show="iconShow === 1"></span>
             <span class="icon-error icon" v-show="iconShow === 2"></span>
           </v-btn>
@@ -24,12 +27,13 @@ export default {
   data () {
     return {
       server: {
-        endPoint: {value: null, name: this.$t("server.endPoint"), rule:[]},
-        port: {value: null, name: this.$t("server.port"), rule:[]},
-        accessKey: {value: null, name: this.$t("server.accessKey"), rule:[]},
-        secretKey: {value: null, name: this.$t("server.secretKey"), rule:[]},
-        bucketName: {value: null, name: this.$t("server.bucketName"), rule:[]}
+        endPoint: {value: null, name: this.$t('server.endPoint'), rule:[]},
+        port: {value: null, name: this.$t('server.port'), rule:[]},
+        accessKey: {value: null, name: this.$t('server.accessKey'), rule:[]},
+        secretKey: {value: null, name: this.$t('server.secretKey'), rule:[]},
+        bucketName: {value: null, name: this.$t('server.bucketName'), rule:[]}
       },
+      useSSL: {value: false, name: this.$t('server.useSSL'), rule:[]},
       iconShow: 0
     }
   },
@@ -39,8 +43,8 @@ export default {
       try {
         let client = new Minio.Client({
           endPoint: this.server.endPoint.value,
-          port: this.server.port.value,
-          useSSL: false,
+          port: parseInt(this.server.port.value),
+          useSSL: this.useSSL.value,
           accessKey: this.server.accessKey.value,
           secretKey: this.server.secretKey.value
         })
@@ -55,6 +59,7 @@ export default {
             localStorage.setItem('accessKey', this.server.accessKey.value)
             localStorage.setItem('secretKey', this.server.secretKey.value)
             localStorage.setItem('bucketName', this.server.bucketName.value)
+            localStorage.setItem('useSSL', this.useSSL.value)
           }
         })
       } catch (err) {

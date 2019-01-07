@@ -50,10 +50,10 @@ export default {
       chooseTag: 0,
       ifPop: false,
       menuItem: [
-        {title: this.$t("menu.folder"), icon: 'icon-folder icon'},
-        {title: this.$t("menu.upload"), icon: 'icon-upload icon'},
-        {title: this.$t("menu.shelf"), icon: 'icon-bookshelf icon'},
-        {title: this.$t("menu.setting"), icon: 'icon-setting icon'}
+        {title: this.$t('menu.folder'), icon: 'icon-folder icon'},
+        {title: this.$t('menu.upload'), icon: 'icon-upload icon'},
+        {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'},
+        {title: this.$t('menu.setting'), icon: 'icon-setting icon'}
       ]
     }
   },

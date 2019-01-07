@@ -2,8 +2,8 @@
   <transition name="slide-right">
     <div class="content">
       <div class="content-bookmark">
-        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === true}" @click="chooseContent">{{$t("menu.content")}}</div>
-        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === false}" @click="chooseBookmark">{{$t("menu.bookmark")}}</div>
+        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === true}" @click="chooseContent">{{$t('menu.content')}}</div>
+        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === false}" @click="chooseBookmark">{{$t('menu.bookmark')}}</div>
       </div>
       <div class="content-wrapper" v-if="bookAvailable" v-show="chooseContentOrBookmark">
         <vue-scroll>
@@ -15,7 +15,7 @@
           </div>
         </vue-scroll>
       </div>
-      <div class="empty" v-else v-show="chooseContentOrBookmark">{{$t("default.loading")}}</div>
+      <div class="empty" v-else v-show="chooseContentOrBookmark">{{$t('default.loading')}}</div>
       <div class="content-wrapper" v-if="bookmarks" v-show="!chooseContentOrBookmark">
         <vue-scroll>
           <div class="content-item"
@@ -26,7 +26,7 @@
           </div>
         </vue-scroll>
       </div>
-      <div class="empty" v-else v-show="!chooseContentOrBookmark">{{$t("default.wait4mark")}}</div>
+      <div class="empty" v-else v-show="!chooseContentOrBookmark">{{$t('default.wait4mark')}}</div>
     </div>
   </transition>
 </template>

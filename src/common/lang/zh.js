@@ -4,7 +4,8 @@ module.exports = {
     uploadMessage: '点击或者拖拽进行上传',
     localMessage: '点击或者拖拽打开图书',
     loading: '加载中...',
-    wait4mark: '您还没有添加书签哦~'
+    wait4mark: '您还没有添加书签哦~',
+    bucket: '上传位置'
   },
   menu: {
     upload: '上传书籍',
@@ -19,7 +20,8 @@ module.exports = {
     port: '端口',
     accessKey: '用户名',
     secretKey: '密码',
-    bucketName: '文件夹'
+    bucketName: '文件夹',
+    useSSL: '开启SSL'
   },
   theme: {
     default: '默认',

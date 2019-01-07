@@ -80,7 +80,7 @@ export default {
       return parseInt(localStorage.getItem('port'))
     },
     useSSL () {
-      return false
+      return localStorage.getItem('useSSL')
     },
     accessKey () {
       return localStorage.getItem('accessKey')
