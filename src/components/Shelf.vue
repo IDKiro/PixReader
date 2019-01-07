@@ -55,10 +55,27 @@ export default {
         } else {
           this.$store.commit('setBookList', undefined)
         }
+        this.loadCover()
       })
       setTimeout(() => {
         this.rotate = false
       }, 1000)
+    },
+    loadCover () {
+      if (this.bookList) {
+        this.bookList.forEach((book, index) => {
+          const localForage = require('localforage')
+          localForage.getItem(this.bookList[index] + '.epub' + 'cover').then((value) => {
+            let img = value
+            if (img) {
+              this.$set(this.cover, index, img)
+              this.$set(this.ifCoverExist, index, true)
+            } else {
+              this.$set(this.ifCoverExist, index, false)
+            }
+          })
+        })
+      }
     },
     changePadding () {
       if (this.$refs.bookshelflist) {
@@ -98,20 +115,7 @@ export default {
     } else {
       this.$store.commit('setBookList', undefined)
     }
-    if (this.bookList) {
-      this.bookList.forEach((book, index) => {
-        const localForage = require('localforage')
-        localForage.getItem(this.bookList[index] + '.epub' + 'cover').then((value) => {
-          let img = value
-          if (img) {
-            this.$set(this.cover, index, img)
-            this.$set(this.ifCoverExist, index, true)
-          } else {
-            this.$set(this.ifCoverExist, index, false)
-          }
-        })
-      })
-    }
+    this.loadCover()
     this.changePadding()
     let that = this
     window.onresize = () => {
