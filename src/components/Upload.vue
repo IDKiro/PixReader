@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Epub from 'epubjs'
 export default {
   name: 'Upload',
   data () {
@@ -26,27 +27,36 @@ export default {
   methods: {
     upload () {
       let fileObj = this.$refs.uploader.files
+      let fileList = []
       for (let i = 0; i < fileObj.length; i++) {
-        let file = fileObj[i]
-        this.client.presignedPutObject(this.bucketName, file.name, (err, url) => {
-          if (err) throw err
-          let xhr = new XMLHttpRequest()
-          xhr.open('PUT', url, true)
-          xhr.upload.onprogress = (event) => {
-            if (event.lengthComputable) {
-              this.progress = (event.loaded / event.total) * 100
-              this.$refs.uploadArea.style.backgroundSize = `${this.progress}% 100%`
-            }
-          }
-          xhr.send(file)
-          xhr.onload = () => {
-            if (xhr.status === 200) {
-              this.$refs.uploadArea.style.backgroundSize = `0 100%`
-              this.UploadSuccess(file)
-            }
-          }
-        })
+        fileList.push(fileObj[i])
       }
+      this.uploadLoop(fileList)
+    },
+    uploadLoop (fileList) {
+      let file = fileList.shift()
+      this.client.presignedPutObject(this.bucketName, file.name, (err, url) => {
+        if (err) throw err
+        let xhr = new XMLHttpRequest()
+        xhr.open('PUT', url, true)
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            this.progress = (event.loaded / event.total) * 100
+            this.$refs.uploadArea.style.backgroundSize = `${this.progress}% 100%`
+          }
+        }
+        xhr.send(file)
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            this.$refs.uploadArea.style.backgroundSize = `0 100%`
+            this.loadCover(file)
+            this.UploadSuccess(file)
+            if (fileList.length) {
+              this.uploadLoop(fileList)
+            }
+          }
+        }
+      })
     },
     UploadSuccess (file) {
       let pattern = /\.{1}[a-z]{1,}$/
@@ -58,6 +68,30 @@ export default {
       } else {
         let bookListTemp = [bookName]
         localStorage.setItem('booklist', JSON.stringify(bookListTemp))
+      }
+    },
+    loadCover (file) {
+      let reader = new FileReader()
+      reader.addEventListener('load', () => {
+        let arr = (new Uint8Array(reader.result)).subarray(0, 2)
+        let header = ''
+        for (let i = 0; i < arr.length; i++) {
+          header += arr[i].toString(16)
+        }
+        if (header === '504b') {
+          let book = new Epub(reader.result, {encoding: 'binary'})
+          book.ready.then(() => {
+            book.loaded.metadata.then(() => {
+              book.archive.getBase64(book.cover).then(value => {
+                const localForage = require('localforage')
+                localForage.setItem(file.name + 'cover', value)
+              })
+            })
+          })
+        }
+      }, false)
+      if (file) {
+        reader.readAsArrayBuffer(file)
       }
     },
     onDragover () {

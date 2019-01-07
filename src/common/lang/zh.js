@@ -4,8 +4,7 @@ module.exports = {
     uploadMessage: '点击或者拖拽进行上传',
     localMessage: '点击或者拖拽打开图书',
     loading: '加载中...',
-    wait4mark: '您还没有添加书签哦~',
-    bucket: '上传位置'
+    wait4mark: '您还没有添加书签哦~'
   },
   menu: {
     upload: '上传书籍',
