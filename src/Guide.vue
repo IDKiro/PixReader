@@ -24,12 +24,14 @@
         </div>
         <div class="title">{{menuItem[chooseTag].title}}</div>
       </div>
-      <div class="main">
-        <upload v-if="chooseTag === 0"/>
-        <shelf v-if="chooseTag === 1"/>
-        <local v-if="chooseTag === 2"/>
-        <setting v-if="chooseTag === 3"/>
-      </div>
+      <vue-scroll>
+        <div class="main">
+          <upload v-if="chooseTag === 0"/>
+          <shelf v-if="chooseTag === 1"/>
+          <local v-if="chooseTag === 2"/>
+          <setting v-if="chooseTag === 3"/>
+        </div>
+      </vue-scroll>
     </div>
   </div>
 </template>
@@ -48,10 +50,10 @@ export default {
       chooseTag: 0,
       ifPop: false,
       menuItem: [
-        {title: '上传书籍', icon: 'icon-upload icon'},
-        {title: '云书架', icon: 'icon-bookshelf icon'},
-        {title: '本地书籍', icon: 'icon-folder icon'},
-        {title: '服务器设置', icon: 'icon-setting icon'}
+        {title: this.$t("menu.upload"), icon: 'icon-upload icon'},
+        {title: this.$t("menu.shelf"), icon: 'icon-bookshelf icon'},
+        {title: this.$t("menu.folder"), icon: 'icon-folder icon'},
+        {title: this.$t("menu.setting"), icon: 'icon-setting icon'}
       ]
     }
   },

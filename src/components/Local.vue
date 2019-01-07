@@ -7,7 +7,7 @@
       @dragover.prevent="onDragover"
       @dragleave.prevent="dragover = false">
       <span class="icon-folder icon"></span>
-      <div class="text">点击或者拖拽打开文件</div>
+      <div class="text">{{$t("default.localMessage")}}</div>
     </label>
     <input id="openfile" name="file" ref="localFile" type="file" accept="application/epub+zip" v-show="false" @change="open"/>
   </div>

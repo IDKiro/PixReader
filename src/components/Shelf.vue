@@ -1,23 +1,21 @@
 <template>
-  <vue-scroll>
-    <div class="book-shelf" ref="bookshelflist">
-      <div class="book-wrapper" v-for="(item, index) in bookList" :key="index" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
-        <div class="book" @click="openBook(index)">
-          <div class="book-title" v-show="!ifCoverExist[index]">
-            {{bookList[index]}}
-          </div>
-          <img :src="cover[index]" width="100%" height="100%" v-show="ifCoverExist[index]">
+  <div class="book-shelf" ref="bookshelflist">
+    <div class="book-wrapper" v-for="(item, index) in bookList" :key="index" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
+      <div class="book" @click="openBook(index)">
+        <div class="book-title" v-show="!ifCoverExist[index]">
+          {{bookList[index]}}
         </div>
-      </div>
-      <div class="book-wrapper" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
-        <div class="sync">
-          <label @click="syncBook">
-            <span class="icon-reload icon" :class="{'go': rotate}"></span>
-          </label>
-        </div>
+        <img :src="cover[index]" width="100%" height="100%" v-show="ifCoverExist[index]">
       </div>
     </div>
-  </vue-scroll>
+    <div class="book-wrapper" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
+      <div class="sync">
+        <label @click="syncBook">
+          <span class="icon-reload icon" :class="{'go': rotate}"></span>
+        </label>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

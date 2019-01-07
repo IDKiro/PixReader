@@ -7039,6 +7039,10 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"
 
+vue-i18n@^8.7.0:
+  version "8.7.0"
+  resolved "http://registry.npm.taobao.org/vue-i18n/download/vue-i18n-8.7.0.tgz#846269ad9d9c40c77479a540398d4024356fa4e1"
+
 vue-loader@^15.4.2:
   version "15.5.0"
   resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-15.5.0.tgz#1ff724511b0f40aea9734f611fe34f6af6ba38f8"
@@ -7074,6 +7078,10 @@ vue@^2.5.21:
 vuescroll@^4.9.4:
   version "4.9.4"
   resolved "http://registry.npm.taobao.org/vuescroll/download/vuescroll-4.9.4.tgz#2dc39f60e2b0e512c31987fbb1ddc06a6d36b0d7"
+
+vuetify@^1.4.0:
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.4.0.tgz#ad5446a319cf4b090d3e14f9c3ee2ac53d545415"
 
 vuex@^3.0.1:
   version "3.0.1"

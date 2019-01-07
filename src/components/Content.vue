@@ -2,8 +2,8 @@
   <transition name="slide-right">
     <div class="content">
       <div class="content-bookmark">
-        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === true}" @click="chooseContent">目录</div>
-        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === false}" @click="chooseBookmark">书签</div>
+        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === true}" @click="chooseContent">{{$t("menu.content")}}</div>
+        <div class="changeTag" :class="{'selected': chooseContentOrBookmark === false}" @click="chooseBookmark">{{$t("menu.bookmark")}}</div>
       </div>
       <div class="content-wrapper" v-if="bookAvailable" v-show="chooseContentOrBookmark">
         <vue-scroll>
@@ -15,7 +15,7 @@
           </div>
         </vue-scroll>
       </div>
-      <div class="empty" v-else v-show="chooseContentOrBookmark">加载中...</div>
+      <div class="empty" v-else v-show="chooseContentOrBookmark">{{$t("default.loading")}}</div>
       <div class="content-wrapper" v-if="bookmarks" v-show="!chooseContentOrBookmark">
         <vue-scroll>
           <div class="content-item"
@@ -26,7 +26,7 @@
           </div>
         </vue-scroll>
       </div>
-      <div class="empty" v-else v-show="!chooseContentOrBookmark">您还没有添加书签哦~</div>
+      <div class="empty" v-else v-show="!chooseContentOrBookmark">{{$t("default.wait4mark")}}</div>
     </div>
   </transition>
 </template>
@@ -95,7 +95,7 @@ export default {
         @include center;
         font-size: px2rem(20);
         &.selected {
-          background: #F2F6FC;
+          background: #e8eaec;
         }
       }
     }
