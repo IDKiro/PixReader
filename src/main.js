@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import App from './App'
-import store from './store'
 import Vuetify from 'vuetify'
 import vuescroll from 'vuescroll'
+import App from './App'
+import store from './store'
+import english from './common/lang/en'
+import chinese from './common/lang/zh'
 import 'vuetify/dist/vuetify.min.css'
 import 'vuescroll/dist/vuescroll.css'
 import './assets/styles/icon.css'
@@ -22,8 +24,8 @@ Vue.prototype.$vuescrollConfig = {
 const i18n = new VueI18n({
   locale: (navigator.language || navigator.browserLanguage).toLowerCase() === 'en' ? 'en' : 'zh',
   messages: {
-      'zh': require('./common/lang/zh'),
-      'en': require('./common/lang/en')
+      'zh': english,
+      'en': chinese
   }
 })
 

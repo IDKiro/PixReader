@@ -1,4 +1,4 @@
-module.exports = {
+const chinese = {
   default: {
     apply: '确定',
     uploadMessage: '点击或者拖拽进行上传',
@@ -32,3 +32,5 @@ module.exports = {
     server: '服务器'
   }
 }
+
+export default chinese

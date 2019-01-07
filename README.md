@@ -2,7 +2,7 @@
 
 [简体中文](./docs/README-zh.md)
 
-> This app is under development, you can try the old [demo[CN]](http://book.idkiro.xyz/) first, and there is the [notebook[CN]](/docs/notebook/README.md).
+> This app is under development, you can try the old [demo](http://book.idkiro.xyz/) first, and there is the [notebook](/docs/notebook/README.md).
 
 > If you want to use this demo, you can use the settings as follow:
 

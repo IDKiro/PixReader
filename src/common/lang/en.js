@@ -1,4 +1,4 @@
-module.exports = {
+const english = {
   default: {
     apply: 'Apply',
     uploadMessage: 'Click or Drag Files to Upload',
@@ -32,3 +32,5 @@ module.exports = {
     server: 'Server'
   }
 }
+
+export default english
