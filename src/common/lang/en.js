@@ -8,7 +8,7 @@ module.exports = {
   },
   menu: {
     upload: 'UPLOAD',
-    shelf: 'BOOKSHELF',
+    shelf: 'BOOKS',
     folder: 'LOCAL',
     setting: 'SETTING',
     content: 'CONTENTS',
@@ -26,5 +26,8 @@ module.exports = {
     eye: 'Eye',
     night: 'Night',
     paper: 'Paper'
+  },
+  setting: {
+    server: 'Server'
   }
 }

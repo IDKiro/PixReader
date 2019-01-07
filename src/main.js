@@ -20,10 +20,10 @@ Vue.prototype.$vuescrollConfig = {
 }
 
 const i18n = new VueI18n({
-  locale: 'en',
+  locale: (navigator.language || navigator.browserLanguage).toLowerCase() === 'en' ? 'en' : 'zh',
   messages: {
-      'zh': require('./lang/zh'),
-      'en': require('./lang/en')
+      'zh': require('./common/lang/zh'),
+      'en': require('./common/lang/en')
   }
 })
 

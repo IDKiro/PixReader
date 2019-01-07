@@ -26,5 +26,8 @@ module.exports = {
     eye: '护眼',
     night: '夜间',
     paper: '纸质'
+  },
+  setting: {
+    server: '服务器'
   }
 }

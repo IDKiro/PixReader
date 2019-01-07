@@ -1,15 +1,20 @@
 <template>
   <div class="setting-wrapper">
-    <div class="setting">
-      <v-form ref="form" lazy-validation>
-        <v-text-field class="setting-item" v-for="(item, index) in server" :key="index" v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" solo required></v-text-field>
-        <v-btn @click="apply">
-          <div v-show="iconShow === 0">{{$t("default.apply")}}</div>
-          <span class="icon-correct icon" v-show="iconShow === 1"></span>
-          <span class="icon-error icon" v-show="iconShow === 2"></span>
-        </v-btn>
-      </v-form>
-    </div>
+    <v-card class="setting">
+      <v-toolbar>
+        <v-toolbar-title>{{$t("setting.server")}}</v-toolbar-title>
+      </v-toolbar>
+      <v-card-actions>
+        <v-form class="main" lazy-validation>
+          <v-text-field class="setting-item" v-for="(item, index) in server" :key="index" v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" solo required></v-text-field>
+          <v-btn @click="apply">
+            <div v-show="iconShow === 0">{{$t("default.apply")}}</div>
+            <span class="icon-correct icon" v-show="iconShow === 1"></span>
+            <span class="icon-error icon" v-show="iconShow === 2"></span>
+          </v-btn>
+        </v-form>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -63,26 +68,30 @@ export default {
 <style lang='scss' scoped>
   @import "../assets/styles/global";
   .setting-wrapper {
-    height: 100vh;
     @include center;
+    height: 100vh;
+    font-size: px2rem(20);
     .setting {
       position: relative;
       overflow: hidden;
       margin: px2rem(10);
-      border: px2rem(1) dashed #d9d9d9;
-      border-radius: px2rem(4);
       width: px2rem(360);
-      .setting-item {
-        padding: px2rem(10);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-      button {
-        margin: 3%;
-        width: 94%;
-        height: px2rem(36);
-        font-size: px2rem(16);
+      .main {
+        margin-top: px2rem(20);
+        width: 100%;
+        .setting-item {
+          padding: 0 px2rem(10);
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          font-size: px2rem(16);
+        }
+        button {
+          margin: 3%;
+          width: 94%;
+          height: px2rem(36);
+          font-size: px2rem(16);
+        }
       }
     }
   }

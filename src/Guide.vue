@@ -26,9 +26,9 @@
       </div>
       <vue-scroll>
         <div class="main">
-          <upload v-if="chooseTag === 0"/>
-          <shelf v-if="chooseTag === 1"/>
-          <local v-if="chooseTag === 2"/>
+          <local v-if="chooseTag === 0"/>
+          <upload v-if="chooseTag === 1"/>
+          <shelf v-if="chooseTag === 2"/>
           <setting v-if="chooseTag === 3"/>
         </div>
       </vue-scroll>
@@ -50,9 +50,9 @@ export default {
       chooseTag: 0,
       ifPop: false,
       menuItem: [
+        {title: this.$t("menu.folder"), icon: 'icon-folder icon'},
         {title: this.$t("menu.upload"), icon: 'icon-upload icon'},
         {title: this.$t("menu.shelf"), icon: 'icon-bookshelf icon'},
-        {title: this.$t("menu.folder"), icon: 'icon-folder icon'},
         {title: this.$t("menu.setting"), icon: 'icon-setting icon'}
       ]
     }
