@@ -5,7 +5,6 @@ import vuescroll from 'vuescroll'
 import 'vuescroll/dist/vuescroll.css'
 import './assets/styles/icon.css'
 import './assets/styles/global.scss'
-import './assets/styles/theme/index.css'
 
 Vue.config.productionTip = false
 Vue.use(vuescroll)
