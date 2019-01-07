@@ -44,10 +44,10 @@ export default {
     return {
       bookReady: false,
       themeList: [
-        {name: '默认', style: {body: {'color': '#000', 'background': '#fff'}}},
-        {name: '护眼', style: {body: {'color': '#000', 'background': '#c7edcc'}}},
+        {name: '默认', style: {body: {'color': '#272822', 'background': '#fff'}}},
+        {name: '护眼', style: {body: {'color': '#272822', 'background': '#c7edcc'}}},
         {name: '夜间', style: {body: {'color': '#F8F8F2', 'background': '#272822'}}},
-        {name: '纸质', style: {body: {'color': '#000', 'background': '#caad75'}}}
+        {name: '纸质', style: {body: {'color': '#272822', 'background': '#caad75'}}}
       ],
       fontSizeList: [
         { fontSize: 12 },
@@ -289,7 +289,7 @@ export default {
         font-size: px2rem(12);
       }
       .spinner > div {
-        background-color: #ccc;
+        background-color: #8c939d;
         margin: px2rem(3);
         height: px2rem(100);
         width: px2rem(5);

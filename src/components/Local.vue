@@ -79,11 +79,11 @@ export default {
         margin-top: px2rem(70);
         margin-bottom: px2rem(5);
         font-size: px2rem(80);
-        color: #8c939d;
+        color: #515a6e;
       }
       .text {
         @include center;
-        color: #8c939d;
+        color: #515a6e;
         font-size: px2rem(20);
       }
     }

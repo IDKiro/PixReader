@@ -63,9 +63,9 @@ export default {
       return {
         endPoint: '127.0.0.1',
         port: '9000',
-        accessKey: 'myserver',
-        secretKey: '12345678',
-        bucketName: 'books'
+        accessKey: 'UserName',
+        secretKey: '********',
+        bucketName: 'BookSeries'
       }
     }
   }
@@ -106,7 +106,7 @@ export default {
         }
         input:focus {
           outline: 0;
-          border-color: #555555;
+          border-color: #515a6e;
         }
       }
       button {
@@ -116,7 +116,7 @@ export default {
         font-size: px2rem(16);
         font-family: inherit;
         padding: 0.5em 1em;
-        color: #444;
+        color: #515a6e;
         color: rgba(0, 0, 0, 0.80);
         border: px2rem(1) solid #999;
         border: none rgba(0, 0, 0, 0);
@@ -133,7 +133,7 @@ export default {
       }
       button:active {
           box-shadow: 0 0 0 px2rem(1) rgba(0,0,0, 0.15) inset, 0 0 px2rem(6) rgba(0,0,0, 0.20) inset;
-          border-color: #000;
+          border-color: #272822;
       }
     }
   }

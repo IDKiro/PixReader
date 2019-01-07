@@ -111,7 +111,7 @@ export default {
         align-items: center;
         .text {
           font-size: px2rem(16);
-          color: #333;
+          color: #272822;
         }
       }
     }
@@ -120,7 +120,7 @@ export default {
       height: 100%;
       @include center;
       font-size: px2rem(16);
-      color: #333;
+      color: #272822;
     }
     &.slide-right-enter, &.slide-right-leave-to {
       transform: translate3d(-100%, 0, 0);

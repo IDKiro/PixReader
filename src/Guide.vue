@@ -84,8 +84,13 @@ export default {
         display: flex;
         align-items: center;
         height: px2rem(48);
+        color: #515a6e;
         &.selected {
-          background: #F2F6FC;
+          background: #e8eaec;
+          color: #272822;
+          .icon {
+            color: #272822;
+          }
         }
         .icon {
           font-size: px2rem(24);
@@ -93,6 +98,12 @@ export default {
         }
         .text {
           font-size: px2rem(18);
+        }
+      }
+      .changeTag:hover {
+        color: #272822;
+        .icon {
+          color: #272822;
         }
       }
     }

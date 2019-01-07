@@ -259,10 +259,10 @@ export default {
         .text {
           flex: 0 0 px2rem(20);
           font-size: px2rem(14);
-          color: #ccc;
+          color: #8c939d;
           @include center;
           &.selected {
-            color: #555555;
+            color: #515a6e;
           }
         }
       }
