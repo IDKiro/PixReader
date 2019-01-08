@@ -1,6 +1,7 @@
 const english = {
   default: {
     apply: 'Apply',
+    reset: 'Reset',
     uploadMessage: 'Click or Drag Files to Upload',
     localMessage: 'Click or Drag to Open Local Book',
     loading: 'Loading...',
@@ -19,7 +20,6 @@ const english = {
     port: 'Port',
     accessKey: 'Access Key',
     secretKey: 'Secret Key',
-    bucketName: 'Bucket Name',
     useSSL: 'Use SSL'
   },
   theme: {
@@ -29,7 +29,9 @@ const english = {
     paper: 'Paper'
   },
   setting: {
-    server: 'Server'
+    minio: 'Minio',
+    server: 'Server',
+    bucket: 'Bucket'
   }
 }
 

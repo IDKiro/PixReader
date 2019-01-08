@@ -24,8 +24,8 @@ Vue.prototype.$vuescrollConfig = {
 const i18n = new VueI18n({
   locale: (navigator.language || navigator.browserLanguage).toLowerCase() === 'en' ? 'en' : 'zh',
   messages: {
-      'zh': english,
-      'en': chinese
+      'zh': chinese,
+      'en': english
   }
 })
 

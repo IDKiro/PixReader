@@ -1,6 +1,7 @@
 const chinese = {
   default: {
     apply: '确定',
+    reset: '重置',
     uploadMessage: '点击或者拖拽进行上传',
     localMessage: '点击或者拖拽打开图书',
     loading: '加载中...',
@@ -19,7 +20,6 @@ const chinese = {
     port: '端口',
     accessKey: '用户名',
     secretKey: '密码',
-    bucketName: '文件夹',
     useSSL: '开启SSL'
   },
   theme: {
@@ -29,7 +29,9 @@ const chinese = {
     paper: '纸质'
   },
   setting: {
-    server: '服务器'
+    minio: 'Minio',
+    server: '服务器',
+    bucket: '保存位置'
   }
 }
 

@@ -1,21 +1,30 @@
 <template>
   <div class="guide">
+    <div class="setting-wrapper" v-if="ifSettingShow">
+      <setting class="setting"/>
+    </div>
     <transition name="slide-right">
       <div class="popup" v-show="ifPop">
         <div class="changeTag" v-for="(item, index) in menuItem" :key="index" :class="{'selected': chooseTag === index}" @click="choose(index)">
           <span :class="menuItem[index].icon"></span>
           <div class="text">{{menuItem[index].title}}</div>
         </div>
+        <v-btn class="setting-btn" flat fab @click="showSetting">
+          <span :class="serverSetting.icon"></span>
+        </v-btn>
       </div>
     </transition>
     <transition name="fade">
-      <div class="pop-mask" v-show="ifPop" @click="hideMenu"></div>
+      <div class="mask" v-show="ifMask" @click="hideMenu"></div>
     </transition>
     <div class="sidebar">
       <div class="changeTag" v-for="(item, index) in menuItem" :key="index" :class="{'selected': chooseTag === index}" @click="choose(index)">
         <span :class="menuItem[index].icon"></span>
         <div class="text">{{menuItem[index].title}}</div>
       </div>
+      <v-btn class="setting-btn" flat fab @click="showSetting">
+        <span :class="serverSetting.icon"></span>
+      </v-btn>
     </div>
     <div class="main-wrapper">
       <div class="topbar">
@@ -23,15 +32,14 @@
           <span class="icon-menu icon"></span>
         </div>
         <div class="title">{{menuItem[chooseTag].title}}</div>
-      </div>
-      <vue-scroll>
-        <div class="main">
-          <local v-if="chooseTag === 0"/>
-          <upload v-if="chooseTag === 1"/>
+      </div>   
+      <div class="main">
+        <local v-if="chooseTag === 0"/>
+        <upload v-if="chooseTag === 1"/>
+        <vue-scroll>
           <shelf v-if="chooseTag === 2"/>
-          <setting v-if="chooseTag === 3"/>
-        </div>
-      </vue-scroll>
+        </vue-scroll>
+      </div>   
     </div>
   </div>
 </template>
@@ -49,12 +57,14 @@ export default {
     return {
       chooseTag: 0,
       ifPop: false,
+      ifMask: false,
+      ifSettingShow: false,
       menuItem: [
         {title: this.$t('menu.folder'), icon: 'icon-folder icon'},
         {title: this.$t('menu.upload'), icon: 'icon-upload icon'},
-        {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'},
-        {title: this.$t('menu.setting'), icon: 'icon-setting icon'}
-      ]
+        {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'}
+      ],
+      serverSetting: {title: this.$t('menu.setting'), icon: 'icon-server icon'}
     }
   },
   methods: {
@@ -63,10 +73,19 @@ export default {
       this.hideMenu()
     },
     hideMenu () {
+      this.ifMask = false
       this.ifPop = false
+      this.ifSettingShow = false
     },
     showMenu () {
+      this.ifMask = true
       this.ifPop = true
+      this.ifSettingShow = false
+    },
+    showSetting () {
+      this.ifMask = true
+      this.ifPop = false
+      this.ifSettingShow = true
     }
   }
 }
@@ -76,6 +95,16 @@ export default {
   @import "./assets/styles/global";
 
   .guide {
+    .setting-wrapper {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      @include center;
+      .setting {
+        border-radius: px2rem(6);
+        z-index: 4;
+      }
+    }
     .sidebar, .popup {
       height: 100vh;
       width: px2rem(200);
@@ -102,6 +131,11 @@ export default {
           font-size: px2rem(18);
         }
       }
+      .setting-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
       .changeTag:hover {
         color: #272822;
         .icon {
@@ -122,7 +156,7 @@ export default {
         transition: all .3s linear;
       }
     }
-    .pop-mask {
+    .mask {
       position: absolute;
       top: 0;
       left: 0;
@@ -164,6 +198,13 @@ export default {
           padding: 0 px2rem(10);
         }
       }
+      .main {
+        position: fixed;
+        left: px2rem(200);
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
     }
   }
   @media screen and (max-width: 960px) {
@@ -174,15 +215,12 @@ export default {
       .main-wrapper {
         margin-top: 0;
         margin-left: 0;
-        height: 100vh;
         .topbar {
           display: flex;
         }
         .main {
-          position: fixed;
-          width: 100%;
+          left: 0;
           top: px2rem(36);
-          bottom: 0;
         }
       }
     }
