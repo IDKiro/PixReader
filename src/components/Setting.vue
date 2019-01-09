@@ -177,6 +177,7 @@ export default {
         margin-bottom: - px2rem(10);
         .text {
           margin-right: px2rem(14);
+          font-size: px2rem(14);
         }
         .icon {
           cursor: pointer;
