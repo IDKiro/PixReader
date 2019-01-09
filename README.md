@@ -46,6 +46,4 @@ export MINIO_SECRET_KEY=password
 (./minio server ./data &)
 ```
 
-Open `address: port` to access minio. 
-
-Now you need to create a bucket and modify the permissions manually.
+> You must change the username and password to your own.
