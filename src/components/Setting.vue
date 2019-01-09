@@ -110,6 +110,7 @@ export default {
         if (exists) {
           this.bucketName = bucketName
           localStorage.setItem('bucketName', bucketName)
+          this.$emit('bucketSelected')
         }
       })
     },

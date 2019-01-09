@@ -1,7 +1,7 @@
 <template>
   <div class="guide">
     <div class="setting-wrapper" v-if="ifSettingShow">
-      <setting class="setting"/>
+      <setting @bucketSelected="bucketSelected" class="setting"/>
     </div>
     <transition name="slide-right">
       <div class="popup" v-show="ifPop">
@@ -37,7 +37,7 @@
         <local v-if="chooseTag === 0"/>
         <upload v-if="chooseTag === 1"/>
         <vue-scroll>
-          <shelf v-if="chooseTag === 2"/>
+          <shelf v-if="chooseTag === 2" ref="shelf"/>
         </vue-scroll>
       </div>   
     </div>
@@ -86,6 +86,10 @@ export default {
       this.ifMask = true
       this.ifPop = false
       this.ifSettingShow = true
+    },
+    bucketSelected () {
+      this.hideMenu()
+      // this.$refs.shelf.syncBook()
     }
   }
 }
