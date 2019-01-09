@@ -276,6 +276,7 @@ export default {
 
 <style lang='scss' scoped>
   @import "./assets/styles/global";
+  
   .ebook {
     overflow: hidden;
     position: relative;

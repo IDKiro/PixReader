@@ -4,12 +4,12 @@
       <v-toolbar-title>{{$t('setting.minio')}}</v-toolbar-title>
     </v-toolbar>
     <v-list class="main">
-      <v-list-group v-model="serverPart.active" :prepend-icon="serverPart.action" append-icon="icon-down" no-action>
+      <v-list-group v-model="serverPart.active" :prepend-icon="serverPart.action" append-icon="icon-down icon" no-action>
         <v-list-tile slot="activator">{{serverPart.title}}</v-list-tile>
         <v-form lazy-validation>
           <v-text-field class="setting-item" v-for="(item, index) in server" :key="index"
             v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" :type="server[index].type"
-            solo required></v-text-field>
+            solo></v-text-field>
           <v-switch class="setting-item" color="grey darken-4" :label="useSSL.name" v-model="useSSL.value"></v-switch>
           <v-btn class="btn-group" @click="apply">
             <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
@@ -19,10 +19,14 @@
           <v-btn class="btn-group" @click="reset">{{$t('default.reset')}}</v-btn>
         </v-form>
       </v-list-group>
-      <v-list-group v-if="ifBucketShow" v-model="buckets.active" :prepend-icon="buckets.action" append-icon="icon-down" no-action>
+      <v-list-group v-if="ifBucketShow" v-model="buckets.active" :prepend-icon="buckets.action" append-icon="icon-down icon" no-action>
         <v-list-tile slot="activator">{{buckets.title}}</v-list-tile>
         <v-list-tile v-for="item in buckets.items" :key="item.name" :class="{'selected': bucketName === item.name}" 
           @click="selectBucket(item.name)">{{item.name}}</v-list-tile>
+          <div class="addItem">
+            <v-text-field class="text" v-model="newBucket.value" :rules="newBucket.rule" :type="newBucket.type"></v-text-field>
+            <span :class="newBucket.icon" @click="addBucket(newBucket.value)"></span>
+          </div>
       </v-list-group>
     </v-list>
   </v-card>
@@ -42,17 +46,18 @@ export default {
       },
       useSSL: {value: false, name: this.$t('server.useSSL'), rule:[]},
       serverPart: {
-        action: 'icon-server',
+        action: 'icon-server icon',
         title: this.$t('setting.server'),
         active: true,
         items: []
       },
       buckets: {
-        action: 'icon-folder',
+        action: 'icon-folder icon',
         title: this.$t('setting.bucket'),
         active: false,
         items: []
       },
+      newBucket: {value: null, icon: 'icon-add icon', type: 'text', rule:[]},
       bucketName: undefined,
       ifBucketShow: false,
       iconShow: 0
@@ -101,13 +106,24 @@ export default {
     },
     selectBucket (bucketName) {
       this.client.bucketExists(bucketName, (err, exists) => {
-        if (err) {
-          this.iconShow = 2
-        }
+        if (err) throw err
         if (exists) {
-          this.iconShow = 1
           this.bucketName = bucketName
           localStorage.setItem('bucketName', bucketName)
+        }
+      })
+    },
+    addBucket (bucketName) {
+      this.client.bucketExists(bucketName, (err, exists) => {
+        if (err) throw err
+        if (!exists) {
+          this.client.makeBucket(bucketName, (err) => {
+            if (err) throw err
+            this.client.listBuckets((err, buckets) => {
+              if (err) throw err
+              this.buckets.items = buckets
+            })
+          })
         }
       })
     }
@@ -124,6 +140,7 @@ export default {
 
 <style lang='scss' scoped>
   @import "../assets/styles/global";
+  
   .setting {
     position: relative;
     overflow: hidden;
@@ -150,6 +167,19 @@ export default {
         color: #272822;
         .icon {
           color: #272822;
+        }
+      }
+      .addItem {
+        display: flex;
+        margin-top: px2rem(10);
+        margin-left: px2rem(50);
+        margin-right: px2rem(14);
+        margin-bottom: - px2rem(10);
+        .text {
+          margin-right: px2rem(14);
+        }
+        .icon {
+          cursor: pointer;
         }
       }
     }
