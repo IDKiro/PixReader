@@ -46,7 +46,7 @@ export default {
       themeList: [
         {name: this.$t('theme.default'), style: {body: {'color': '#272822', 'background': '#fff'}}},
         {name: this.$t('theme.eye'), style: {body: {'color': '#272822', 'background': '#c7edcc'}}},
-        {name: this.$t('theme.night'), style: {body: {'color': '#F8F8F2', 'background': '#272822'}}},
+        {name: this.$t('theme.night'), style: {body: {'color': '#f8f8f2', 'background': '#272822'}}},
         {name: this.$t('theme.paper'), style: {body: {'color': '#272822', 'background': '#caad75'}}}
       ],
       fontSizeList: [

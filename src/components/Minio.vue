@@ -3,29 +3,33 @@
     <v-toolbar flat>
       <v-toolbar-title>{{$t('setting.minio')}}</v-toolbar-title>
     </v-toolbar>
-    <v-list class="main">
+    <v-list class="main-wrapper">
       <v-list-group v-model="serverPart.active" :prepend-icon="serverPart.action" append-icon="icon-down icon" no-action>
         <v-list-tile slot="activator">{{serverPart.title}}</v-list-tile>
-        <v-form lazy-validation>
-          <v-text-field class="setting-item" v-for="(item, index) in server" :key="index"
-            v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" :type="server[index].type"
-            solo></v-text-field>
-          <v-switch class="setting-item" color="grey darken-4" :label="useSSL.name" v-model="useSSL.value"></v-switch>
-          <v-btn class="btn-group" @click="apply">
-            <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
-            <span class="icon-correct icon" v-show="iconShow === 1"></span>
-            <span class="icon-error icon" v-show="iconShow === 2"></span>
-          </v-btn>
-          <v-btn class="btn-group" @click="reset">{{$t('default.reset')}}</v-btn>
-        </v-form>
+        <div class="main">
+          <v-form lazy-validation>
+            <v-text-field class="setting-item" v-for="(item, index) in server" :key="index"
+              v-model="server[index].value" :rules="server[index].rule" :label="server[index].name" :type="server[index].type"
+              solo></v-text-field>
+            <v-switch class="setting-item" color="grey darken-4" :label="useSSL.name" v-model="useSSL.value"></v-switch>
+            <v-btn class="btn-group" @click="apply">
+              <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
+              <span class="icon-correct icon" v-show="iconShow === 1"></span>
+              <span class="icon-error icon" v-show="iconShow === 2"></span>
+            </v-btn>
+            <v-btn class="btn-group" @click="reset">{{$t('default.reset')}}</v-btn>
+          </v-form>
+        </div>
       </v-list-group>
       <v-list-group v-if="ifBucketShow" v-model="buckets.active" :prepend-icon="buckets.action" append-icon="icon-down icon" no-action>
         <v-list-tile slot="activator">{{buckets.title}}</v-list-tile>
         <v-list-tile v-for="item in buckets.items" :key="item.name" :class="{'selected': bucketName === item.name}" 
           @click="selectBucket(item.name)">{{item.name}}</v-list-tile>
-          <div class="addItem">
-            <v-text-field class="text" v-model="newBucket.value" :rules="newBucket.rule" :type="newBucket.type"></v-text-field>
-            <span :class="newBucket.icon" @click="addBucket(newBucket.value)"></span>
+          <div class="main">
+            <div class="addItem">
+              <v-text-field class="text" v-model="newBucket.value" :rules="newBucket.rule" :type="newBucket.type"></v-text-field>
+              <span :class="newBucket.icon" @click="addBucket(newBucket.value)"></span>
+            </div>
           </div>
       </v-list-group>
     </v-list>
@@ -148,40 +152,41 @@ export default {
     margin: px2rem(10);
     width: px2rem(240);
     font-size: px2rem(20);
-    .main {
+    .main-wrapper {
       width: 100%;
-      .setting-item {
-        padding: 0 px2rem(10);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        font-size: px2rem(14);
-      }
-      .btn-group {
-        margin: 4%;
-        width: 42%;
-        height: px2rem(36);
-        font-size: px2rem(14);
-      }
-      .selected {
-        background: #e8eaec;
-        color: #272822;
-        .icon {
-          color: #272822;
-        }
-      }
-      .addItem {
-        display: flex;
-        margin-top: px2rem(10);
-        margin-left: px2rem(50);
-        margin-right: px2rem(14);
-        margin-bottom: - px2rem(10);
-        .text {
-          margin-right: px2rem(14);
+      .main {
+        padding: px2rem(10);
+        .setting-item {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
           font-size: px2rem(14);
         }
-        .icon {
-          cursor: pointer;
+        .btn-group {
+          margin: 2%;
+          width: 46%;
+          height: px2rem(36);
+          font-size: px2rem(14);
+        }
+        .selected {
+          background: #e8eaec;
+          color: #272822;
+          .icon {
+            color: #272822;
+          }
+        }
+        .addItem {
+          display: flex;
+          margin-left: px2rem(40);
+          margin-right: px2rem(2);
+          margin-bottom: - px2rem(14);
+          .text {
+            margin-right: px2rem(16);
+            font-size: px2rem(14);
+          }
+          .icon {
+            cursor: pointer;
+          }
         }
       }
     }

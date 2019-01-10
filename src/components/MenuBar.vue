@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-bar">
+  <div ref="menubar">
     <transition name="slide-up">
       <div class="menu-wrapper" :class="{'hideBoxShadow': ifSettingShow || !ifTitleAndMenuShow}"
            v-show="ifTitleAndMenuShow">
