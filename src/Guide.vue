@@ -1,7 +1,7 @@
 <template>
   <div class="guide">
     <div class="setting-wrapper" v-if="ifSettingShow">
-      <setting @bucketSelected="bucketSelected" class="setting"/>
+      <minio @bucketSelected="bucketSelected" class="setting"/>
     </div>
     <transition name="slide-right">
       <div class="popup" v-show="ifPop">
@@ -47,12 +47,12 @@
 <script>
 import Shelf from './components/Shelf'
 import Upload from './components/Upload'
-import Setting from './components/Setting'
+import Minio from './components/Minio'
 import Local from './components/Local'
 
 export default {
   name: 'Guide',
-  components: {Shelf, Upload, Setting, Local},
+  components: {Shelf, Upload, Minio, Local},
   data () {
     return {
       chooseTag: 0,
@@ -187,7 +187,7 @@ export default {
       .topbar {
         display: none;
         z-index: 1;
-        height: px2rem(36);
+        height: px2rem(48);
         width: 100%;
         background: #fff;
         box-shadow: 0 px2rem(3) px2rem(3) rgba(0, 0, 0, .25);
@@ -224,7 +224,7 @@ export default {
         }
         .main {
           left: 0;
-          top: px2rem(36);
+          top: px2rem(48);
         }
       }
     }

@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'Setting',
+  name: 'Minio',
   data () {
     return {
       client: null,
