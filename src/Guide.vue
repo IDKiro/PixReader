@@ -9,9 +9,9 @@
           <span :class="menuItem[index].icon"></span>
           <div class="text">{{menuItem[index].title}}</div>
         </div>
-        <v-btn class="setting-btn" flat fab @click="showSetting">
+        <button class="setting-btn" @click="showSetting">
           <span :class="serverSetting.icon"></span>
-        </v-btn>
+        </button>
       </div>
     </transition>
     <transition name="fade">
@@ -22,9 +22,9 @@
         <span :class="menuItem[index].icon"></span>
         <div class="text">{{menuItem[index].title}}</div>
       </div>
-      <v-btn class="setting-btn" flat fab @click="showSetting">
+      <button class="setting-btn" @click="showSetting">
         <span :class="serverSetting.icon"></span>
-      </v-btn>
+      </button>
     </div>
     <div class="main-wrapper">
       <div class="topbar">
@@ -139,6 +139,14 @@ export default {
         position: absolute;
         bottom: 0;
         left: 0;
+        height: px2rem(40);
+        width: px2rem(40);
+        border: none;
+        border-radius: 50%;
+        @include center;
+      }
+      .setting-btn:hover, .setting-btn:active  {
+        background: #e8eaec;
       }
       .changeTag:hover {
         color: #272822;
