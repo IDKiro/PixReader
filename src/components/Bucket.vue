@@ -28,7 +28,7 @@ export default {
         endPoint: {value: null, name: this.$t('server.endPoint'), type: 'text'},
         port: {value: null, name: this.$t('server.port'), type: 'text'},
         accessKey: {value: null, name: this.$t('server.accessKey'), type: 'text'},
-        secretKey: {value: null, name: this.$t('server.secretKey'), type: 'password'},
+        secretKey: {value: null, name: this.$t('server.secretKey'), type: 'password'}
       },
       useSSL: {value: false, name: this.$t('server.useSSL')},
       buckets: {
@@ -73,7 +73,7 @@ export default {
     try {
       this.server.endPoint.value = localStorage.getItem('endPoint')
       this.server.port.value = parseInt(localStorage.getItem('port'))
-      this.useSSL.value = localStorage.getItem('useSSL') === "true" ? true : false
+      this.useSSL.value = localStorage.getItem('useSSL') === 'true'
       this.server.accessKey.value = localStorage.getItem('accessKey')
       this.server.secretKey.value = localStorage.getItem('secretKey')
       this.client = new Minio.Client({

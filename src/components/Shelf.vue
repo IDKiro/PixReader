@@ -33,7 +33,7 @@ export default {
   methods: {
     openBook (index) {
       this.$store.commit('setLocalUrl', undefined)
-      this.client.presignedGetObject(this.bucketName, this.bookList[index] + '.epub', (err, ) => {
+      this.client.presignedGetObject(this.bucketName, this.bookList[index] + '.epub', (err) => {
         if (err) throw err
         localStorage.setItem('defaultBookName', this.bookList[index] + '.epub')
         this.$store.commit('setShowBook', true)
@@ -97,7 +97,7 @@ export default {
       return parseInt(localStorage.getItem('port'))
     },
     useSSL () {
-      return localStorage.getItem('useSSL') === "true" ? true : false
+      return localStorage.getItem('useSSL') === 'true'
     },
     accessKey () {
       return localStorage.getItem('accessKey')

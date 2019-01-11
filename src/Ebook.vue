@@ -246,7 +246,7 @@ export default {
       return parseInt(localStorage.getItem('port'))
     },
     useSSL () {
-      return localStorage.getItem('useSSL') === "true" ? true : false
+      return localStorage.getItem('useSSL') === 'true'
     },
     accessKey () {
       return localStorage.getItem('accessKey')
