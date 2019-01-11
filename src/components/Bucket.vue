@@ -11,7 +11,7 @@
         <div class="text">{{item.name}}</div>
       </div>
       <div class="addItem">
-        <input class="text" v-model="newBucket.value" :type="newBucket.type">  
+        <input class="pix-input" v-model="newBucket.value" :type="newBucket.type">  
         <span :class="newBucket.icon" @click="addBucket(newBucket.value)"></span>
       </div>
     </div>
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/styles/global";
+  @import "../styles/global";
   
   .setting {
     position: relative;
@@ -143,20 +143,13 @@ export default {
         display: flex;
         margin: px2rem(10);
         align-items: center;
-        .text {
-          margin-left: px2rem(17);
+        .pix-input {
+          padding-left: px2rem(4);
+          margin-left: px2rem(26);
           margin-right: px2rem(10);
           font-size: px2rem(14);
-          padding: 0 px2rem(6);
           height: px2rem(24);
           width: 100%;
-          border: px2rem(1) solid #ccc;
-          border-radius: px2rem(3);
-          -webkit-box-shadow: inset 0 px2rem(1) px2rem(1) rgba(0,0,0,.075);
-          box-shadow: inset 0 px2rem(1) px2rem(1) rgba(0,0,0,.075);
-          -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-          -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
         }
         .icon {
           cursor: pointer;

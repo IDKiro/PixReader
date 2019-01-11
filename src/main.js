@@ -6,8 +6,8 @@ import store from './store'
 import english from './common/lang/en'
 import chinese from './common/lang/zh'
 import 'vuescroll/dist/vuescroll.css'
-import './assets/styles/icon.css'
-import './assets/styles/global.scss'
+import './assets/icon.css'
+import './styles/global.scss'
 
 Vue.use(VueI18n)
 Vue.use(vuescroll)

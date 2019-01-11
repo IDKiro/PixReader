@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  @import "./assets/styles/global";
+  @import "./styles/global";
 
   .guide {
     .setting-wrapper {
@@ -166,6 +166,7 @@ export default {
           width: px2rem(40);
           border: none;
           border-radius: 50%;
+          background: #fff;
           @include center;
         }
         .setting-btn:hover, .setting-btn:active  {

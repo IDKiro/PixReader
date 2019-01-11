@@ -5,7 +5,7 @@
     </div>
     <div class="main-wrapper">
       <div class="main">
-        <input class="input" v-for="(item, index) in server" :key="index" 
+        <input class="pix-input" v-for="(item, index) in server" :key="index" 
           v-model="server[index].value" :placeholder="server[index].name" :type="server[index].type">  
         <div class="switch-wrapper">
           <div class="switch-container">
@@ -15,12 +15,12 @@
           <label>{{useSSL.name}}</label>  
         </div>
         <div class="btn-group">
-          <button class="btn" @click="apply">
+          <button class="pix-btn" @click="apply">
             <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
             <span class="icon-correct icon" v-show="iconShow === 1"></span>
             <span class="icon-error icon" v-show="iconShow === 2"></span>
           </button>
-          <button class="btn" @click="reset">{{$t('default.reset')}}</button>
+          <button class="pix-btn" @click="reset">{{$t('default.reset')}}</button>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/styles/global";
+  @import "../styles/global";
   
   .setting {
     position: relative;
@@ -119,19 +119,11 @@ export default {
       }
       .main {
         padding: px2rem(10);
-        .input {
+        .pix-input {
           font-size: px2rem(14);
           margin: px2rem(6) 0;
-          padding: 0 px2rem(6);
           height: px2rem(32);
           width: 100%;
-          border: px2rem(1) solid #ccc;
-          border-radius: px2rem(3);
-          -webkit-box-shadow: inset 0 px2rem(1) px2rem(1) rgba(0,0,0,.075);
-          box-shadow: inset 0 px2rem(1) px2rem(1) rgba(0,0,0,.075);
-          -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-          -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
         }
         .switch-wrapper {
           display: flex;
@@ -192,27 +184,10 @@ export default {
         }
         .btn-group {
           @include center;
-          .btn {
+          .pix-btn {
+            font-size: px2rem(16);
             margin: 2%;
             width: 46%;
-            height: px2rem(36);
-            font-size: px2rem(14);
-            color: rgba(0, 0, 0, 0.80);
-            border: none rgba(0, 0, 0, 0);
-            background-color: #e8eaec;
-            text-decoration: none;
-            border-radius: px2rem(2);
-          }
-          .btn:hover,
-          .btn:focus {
-            background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
-          }
-          .btn:focus {
-            outline: 0;
-          }
-          .btn:active {
-            box-shadow: 0 0 0 px2rem(1) rgba(0,0,0, 0.15) inset, 0 0 px2rem(6) rgba(0,0,0, 0.20) inset;
-            border-color: #000;
           }
         }
       }
