@@ -7157,10 +7157,6 @@ vuescroll@^4.9.4:
   version "4.9.4"
   resolved "http://registry.npm.taobao.org/vuescroll/download/vuescroll-4.9.4.tgz#2dc39f60e2b0e512c31987fbb1ddc06a6d36b0d7"
 
-vuetify@^1.4.0:
-  version "1.4.0"
-  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.4.0.tgz#ad5446a319cf4b090d3e14f9c3ee2ac53d545415"
-
 vuex@^3.0.1:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/vuex/download/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"

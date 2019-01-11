@@ -1,7 +1,10 @@
 <template>
   <div class="guide">
-    <div class="setting-wrapper" v-if="ifSettingShow">
-      <minio @bucketSelected="bucketSelected" class="setting"/>
+    <div class="setting-wrapper" v-if="ifServerShow">
+      <server class="setting"/>
+    </div>
+    <div class="setting-wrapper" v-if="ifBucketShow">
+      <bucket class="setting"/>
     </div>
     <transition name="slide-right">
       <div class="popup" v-show="ifPop">
@@ -9,9 +12,14 @@
           <span :class="menuItem[index].icon"></span>
           <div class="text">{{menuItem[index].title}}</div>
         </div>
-        <button class="setting-btn" @click="showSetting">
-          <span :class="serverSetting.icon"></span>
-        </button>
+        <div class="setting-btn-group">
+          <button class="setting-btn" @click="showServer">
+            <span :class="serverSetting.icon"></span>
+          </button>
+          <button class="setting-btn" @click="showBucket">
+            <span :class="bucketSetting.icon"></span>
+          </button>
+        </div>
       </div>
     </transition>
     <transition name="fade">
@@ -22,9 +30,14 @@
         <span :class="menuItem[index].icon"></span>
         <div class="text">{{menuItem[index].title}}</div>
       </div>
-      <button class="setting-btn" @click="showSetting">
-        <span :class="serverSetting.icon"></span>
-      </button>
+      <div class="setting-btn-group">
+        <button class="setting-btn" @click="showServer">
+          <span :class="serverSetting.icon"></span>
+        </button>
+        <button class="setting-btn" @click="showBucket">
+          <span :class="bucketSetting.icon"></span>
+        </button>
+      </div>
     </div>
     <div class="main-wrapper">
       <div class="topbar">
@@ -47,24 +60,27 @@
 <script>
 import Shelf from './components/Shelf'
 import Upload from './components/Upload'
-import Minio from './components/Minio'
+import Server from './components/Server'
+import Bucket from './components/Bucket'
 import Local from './components/Local'
 
 export default {
   name: 'Guide',
-  components: {Shelf, Upload, Minio, Local},
+  components: {Shelf, Upload, Server, Bucket, Local},
   data () {
     return {
       chooseTag: 0,
       ifPop: false,
       ifMask: false,
-      ifSettingShow: false,
+      ifServerShow: false,
+      ifBucketShow: false,
       menuItem: [
         {title: this.$t('menu.folder'), icon: 'icon-folder icon'},
         {title: this.$t('menu.upload'), icon: 'icon-upload icon'},
         {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'}
       ],
-      serverSetting: {title: this.$t('menu.setting'), icon: 'icon-server icon'}
+      serverSetting: {title: this.$t('setting.server'), icon: 'icon-server icon'},
+      bucketSetting: {title: this.$t('setting.bucket'), icon: 'icon-folder icon'}
     }
   },
   methods: {
@@ -75,21 +91,26 @@ export default {
     hideMenu () {
       this.ifMask = false
       this.ifPop = false
-      this.ifSettingShow = false
+      this.ifServerShow = false
+      this.ifBucketShow = false
     },
     showMenu () {
       this.ifMask = true
       this.ifPop = true
-      this.ifSettingShow = false
+      this.ifServerShow = false
+      this.ifBucketShow = false
     },
-    showSetting () {
+    showServer () {
       this.ifMask = true
       this.ifPop = false
-      this.ifSettingShow = true
+      this.ifServerShow = true
+      this.ifBucketShow = false
     },
-    bucketSelected () {
-      this.hideMenu()
-      // this.$refs.shelf.syncBook()
+    showBucket () {
+      this.ifMask = true
+      this.ifPop = false
+      this.ifServerShow = false
+      this.ifBucketShow = true
     }
   }
 }
@@ -135,18 +156,21 @@ export default {
           font-size: px2rem(18);
         }
       }
-      .setting-btn {
+      .setting-btn-group {
         position: absolute;
+        display: flex;
         bottom: 0;
         left: 0;
-        height: px2rem(40);
-        width: px2rem(40);
-        border: none;
-        border-radius: 50%;
-        @include center;
-      }
-      .setting-btn:hover, .setting-btn:active  {
-        background: #e8eaec;
+        .setting-btn {
+          height: px2rem(40);
+          width: px2rem(40);
+          border: none;
+          border-radius: 50%;
+          @include center;
+        }
+        .setting-btn:hover, .setting-btn:active  {
+          background: #e8eaec;
+        }
       }
       .changeTag:hover {
         color: #272822;
