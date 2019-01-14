@@ -12,11 +12,11 @@
           <span :class="menuItem[index].icon"></span>
           <div class="text">{{menuItem[index].title}}</div>
         </div>
-        <div class="setting-btn-group">
-          <button class="setting-btn" @click="showServer">
+        <div class="btn-group">
+          <button class="pix-round-btn" @click="showServer">
             <span :class="serverSetting.icon"></span>
           </button>
-          <button class="setting-btn" @click="showBucket">
+          <button class="pix-round-btn" @click="showBucket">
             <span :class="bucketSetting.icon"></span>
           </button>
         </div>
@@ -30,11 +30,11 @@
         <span :class="menuItem[index].icon"></span>
         <div class="text">{{menuItem[index].title}}</div>
       </div>
-      <div class="setting-btn-group">
-        <button class="setting-btn" @click="showServer">
+      <div class="btn-group">
+        <button class="pix-round-btn" @click="showServer">
           <span :class="serverSetting.icon"></span>
         </button>
-        <button class="setting-btn" @click="showBucket">
+        <button class="pix-round-btn" @click="showBucket">
           <span :class="bucketSetting.icon"></span>
         </button>
       </div>
@@ -156,22 +156,11 @@ export default {
           font-size: px2rem(18);
         }
       }
-      .setting-btn-group {
+      .btn-group {
         position: absolute;
         display: flex;
         bottom: 0;
         left: 0;
-        .setting-btn {
-          height: px2rem(40);
-          width: px2rem(40);
-          border: none;
-          border-radius: 50%;
-          background: #fff;
-          @include center;
-        }
-        .setting-btn:hover, .setting-btn:active  {
-          background: #e8eaec;
-        }
       }
       .changeTag:hover {
         color: #272822;
