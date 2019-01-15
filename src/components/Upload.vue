@@ -35,7 +35,7 @@ export default {
     },
     uploadLoop (fileList) {
       let file = fileList.shift()
-      this.client.presignedPutObject(this.bucketName, file.name, (err, url) => {
+      this.client.presignedPutObject(this.bucketName(), file.name, (err, url) => {
         if (err) throw err
         let xhr = new XMLHttpRequest()
         xhr.open('PUT', url, true)
@@ -53,6 +53,8 @@ export default {
             this.UploadSuccess(file)
             if (fileList.length) {
               this.uploadLoop(fileList)
+            } else {
+              this.$emit('uploaded')
             }
           }
         }
@@ -102,6 +104,9 @@ export default {
     onDrop (event) {
       this.dragover = false
       this.$refs.uploader.files = event.dataTransfer.files
+    },
+    bucketName () {
+      return localStorage.getItem('bucketName')
     }
   },
   computed: {
@@ -122,12 +127,9 @@ export default {
     },
     secretKey () {
       return localStorage.getItem('secretKey')
-    },
-    bucketName () {
-      return localStorage.getItem('bucketName')
     }
   },
-  created () {
+  mounted () {
     const Minio = require('minio')
     this.client = new Minio.Client({
       endPoint: this.endPoint,

@@ -4,7 +4,7 @@
       <server class="setting"/>
     </div>
     <div class="setting-wrapper" v-if="ifBucketShow">
-      <bucket class="setting"/>
+      <bucket class="setting" @bucketSelected="syncBook"/>
     </div>
     <transition name="slide-right">
       <div class="popup" v-show="ifPop">
@@ -47,11 +47,9 @@
         <div class="title">{{menuItem[chooseTag].title}}</div>
       </div>   
       <div class="main">
-        <local v-if="chooseTag === 0"/>
-        <upload v-if="chooseTag === 1"/>
-        <vue-scroll>
-          <shelf v-if="chooseTag === 2" ref="shelf"/>
-        </vue-scroll>
+        <local v-show="chooseTag === 2"/>
+        <upload v-show="chooseTag === 1"  @uploaded="syncBook"/>
+        <shelf v-show="chooseTag === 0" ref="shelf"/>
       </div>   
     </div>
   </div>
@@ -75,9 +73,9 @@ export default {
       ifServerShow: false,
       ifBucketShow: false,
       menuItem: [
-        {title: this.$t('menu.folder'), icon: 'icon-folder icon'},
+        {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'},
         {title: this.$t('menu.upload'), icon: 'icon-upload icon'},
-        {title: this.$t('menu.shelf'), icon: 'icon-bookshelf icon'}
+        {title: this.$t('menu.folder'), icon: 'icon-folder icon'}
       ],
       serverSetting: {title: this.$t('setting.server'), icon: 'icon-server icon'},
       bucketSetting: {title: this.$t('setting.bucket'), icon: 'icon-folder icon'}
@@ -111,6 +109,10 @@ export default {
       this.ifPop = false
       this.ifServerShow = false
       this.ifBucketShow = true
+    },
+    syncBook () {
+      this.hideMenu()
+      this.$refs.shelf.syncBook()
     }
   }
 }

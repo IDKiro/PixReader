@@ -1,21 +1,23 @@
 <template>
-  <div class="book-shelf" ref="bookshelflist">
-    <div class="book-wrapper" v-for="(item, index) in bookList" :key="index" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
-      <div class="book" @click="openBook(index)">
-        <div class="book-title" v-show="!ifCoverExist[index]">
-          {{bookList[index]}}
+  <vue-scroll>
+    <div class="book-shelf" ref="bookshelflist">
+      <div class="book-wrapper" v-for="(item, index) in bookList" :key="index" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
+        <div class="book" @click="openBook(index)">
+          <div class="book-title" v-show="!ifCoverExist[index]">
+            {{bookList[index]}}
+          </div>
+          <img :src="cover[index]" width="100%" height="100%" v-show="ifCoverExist[index]">
         </div>
-        <img :src="cover[index]" width="100%" height="100%" v-show="ifCoverExist[index]">
+      </div>
+      <div class="book-wrapper" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
+        <div class="sync">
+          <label @click="syncBook">
+            <span class="icon-reload icon" :class="{'go': rotate}"></span>
+          </label>
+        </div>
       </div>
     </div>
-    <div class="book-wrapper" :style="{paddingLeft: paddingLeftAndRight + 'rem', paddingRight: paddingLeftAndRight + 'rem'}">
-      <div class="sync">
-        <label @click="syncBook">
-          <span class="icon-reload icon" :class="{'go': rotate}"></span>
-        </label>
-      </div>
-    </div>
-  </div>
+  </vue-scroll>
 </template>
 
 <script>
@@ -33,7 +35,7 @@ export default {
   methods: {
     openBook (index) {
       this.$store.commit('setLocalUrl', undefined)
-      this.client.presignedGetObject(this.bucketName, this.bookList[index] + '.epub', (err) => {
+      this.client.presignedGetObject(this.bucketName(), this.bookList[index] + '.epub', (err) => {
         if (err) throw err
         localStorage.setItem('defaultBookName', this.bookList[index] + '.epub')
         this.$store.commit('setShowBook', true)
@@ -41,7 +43,7 @@ export default {
     },
     syncBook () {
       this.rotate = true
-      let stream = this.client.listObjects(this.bucketName, '', true)
+      let stream = this.client.listObjects(this.bucketName(), '', true)
       let booklist = []
       stream.on('data', (obj) => {
         let pattern = /\.{1}[a-z]{1,}$/
@@ -84,6 +86,9 @@ export default {
         const bookLineNum = Math.floor((this.$refs.bookshelflist.clientWidth * 36 / fontSize - 20) / 140)
         this.paddingLeftAndRight = ((this.$refs.bookshelflist.clientWidth / fontSize - 20 / 36) / bookLineNum - 140 / 36) / 2 + 10 / 36
       }
+    },
+    bucketName () {
+      return localStorage.getItem('bucketName')
     }
   },
   computed: {
@@ -104,12 +109,17 @@ export default {
     },
     secretKey () {
       return localStorage.getItem('secretKey')
-    },
-    bucketName () {
-      return localStorage.getItem('bucketName')
     }
   },
   mounted () {
+    const Minio = require('minio')
+    this.client = new Minio.Client({
+      endPoint: this.endPoint,
+      port: this.port,
+      useSSL: this.useSSL,
+      accessKey: this.accessKey,
+      secretKey: this.secretKey
+    })
     if (localStorage.getItem('booklist')) {
       this.$store.commit('setBookList', JSON.parse(localStorage.getItem('booklist')))
     } else {
@@ -121,16 +131,6 @@ export default {
     window.onresize = () => {
       that.changePadding()
     }
-  },
-  created () {
-    const Minio = require('minio')
-    this.client = new Minio.Client({
-      endPoint: this.endPoint,
-      port: this.port,
-      useSSL: this.useSSL,
-      accessKey: this.accessKey,
-      secretKey: this.secretKey
-    })
   }
 }
 </script>

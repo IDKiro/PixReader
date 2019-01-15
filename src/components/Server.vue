@@ -54,12 +54,18 @@ export default {
           accessKey: this.server.accessKey.value,
           secretKey: this.server.secretKey.value
         })
-        this.iconShow = 1
-        localStorage.setItem('endPoint', this.server.endPoint.value)
-        localStorage.setItem('port', this.server.port.value)
-        localStorage.setItem('useSSL', this.useSSL.value)
-        localStorage.setItem('accessKey', this.server.accessKey.value)
-        localStorage.setItem('secretKey', this.server.secretKey.value)
+        this.client.listBuckets((err) => {
+          if (err) {
+            this.iconShow = 2
+            throw err
+          }
+          this.iconShow = 1
+          localStorage.setItem('endPoint', this.server.endPoint.value)
+          localStorage.setItem('port', this.server.port.value)
+          localStorage.setItem('useSSL', this.useSSL.value)
+          localStorage.setItem('accessKey', this.server.accessKey.value)
+          localStorage.setItem('secretKey', this.server.secretKey.value)
+        })
       } catch (err) {
         this.iconShow = 2
         throw err
