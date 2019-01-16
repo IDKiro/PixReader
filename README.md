@@ -11,7 +11,6 @@ Address: 176.122.140.215
 port: 9000  
 Access Key: minio
 Secret Key: miniokey
-Bucket Name: upload
 Use SSL: false
 ```
 

@@ -9,7 +9,6 @@
 端口: 9000  
 用户名: minio
 密码: miniokey
-文件夹: upload
 开启SSL: false
 ```
 
