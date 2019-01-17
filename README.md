@@ -2,8 +2,8 @@
 
 [简体中文](./docs/README-zh.md)
 
-> This app is under development, you can try the old [demo](http://book.idkiro.xyz/) first, and there is the [notebook](/docs/notebook/README.md).
-
+> This app is under development, you can try the old [demo](http://book.idkiro.xyz/) first
+> 
 > If you want to use this demo, you can use the settings as follow:
 
 ```
@@ -13,6 +13,9 @@ Access Key: minio
 Secret Key: miniokey
 Use SSL: false
 ```
+
+> There is the [notebook](/docs/notebook/README.md).
+
 
 ## Screenshot
 

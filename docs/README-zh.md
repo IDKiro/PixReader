@@ -1,6 +1,6 @@
 # PixReader
 
-> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)，如果有需要，这是前期开发的[笔记](/docs/notebook/README.md)。
+> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)
 
 > 这里提供可用于测试的设置：
 
@@ -11,6 +11,8 @@
 密码: miniokey
 开启SSL: false
 ```
+
+> 如果有需要，这是前期开发的[笔记](/docs/notebook/README.md)
 
 ## 应用截图
 
