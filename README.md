@@ -4,8 +4,6 @@
 
 > This app is under development, you can try the old [demo](http://book.idkiro.xyz/) first
 
-> If you want to use this demo, you can use the settings as follow:
-
 > There is the [notebook](/docs/notebook/README.md).
 
 
