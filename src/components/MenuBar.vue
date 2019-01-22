@@ -1,61 +1,132 @@
 <template>
   <div ref="menubar">
     <transition name="slide-up">
-      <div class="menu-wrapper" :class="{'hideBoxShadow': ifSettingShow || !ifTitleAndMenuShow}"
-           v-show="ifTitleAndMenuShow">
-        <div class="icon-wrapper" @click="showSetting(3)">
-          <span class="icon-contents icon"></span>
+      <div
+        class="menu-wrapper"
+        :class="{'hideBoxShadow': ifSettingShow || !ifTitleAndMenuShow}"
+        v-show="ifTitleAndMenuShow"
+      >
+        <div
+          class="icon-wrapper"
+          @click="showSetting(3)"
+        >
+          <span class="icon-contents icon" />
         </div>
-        <div class="icon-wrapper" @click="showSetting(2)">
-          <span class="icon-Progress-read icon"></span>
+        <div
+          class="icon-wrapper"
+          @click="showSetting(2)"
+        >
+          <span class="icon-Progress-read icon" />
         </div>
-        <div class="icon-wrapper" @click="showSetting(1)">
-          <span class="icon-brightness icon"></span>
+        <div
+          class="icon-wrapper"
+          @click="showSetting(1)"
+        >
+          <span class="icon-brightness icon" />
         </div>
-        <div class="icon-wrapper" @click="showSetting(0)">
-          <span class="icon">A</span>
+        <div
+          class="icon-wrapper"
+          @click="showSetting(0)"
+        >
+          <span class="icon">
+            A
+          </span>
         </div>
       </div>
     </transition>
     <transition name="slide-up">
-      <div class="setting-wrapper" v-show="ifSettingShow">
-        <div class="setting-font-size" v-if="showTag === 0">
-          <div class="preview" :style="{fontSize: fontSizeList[0].fontSize + 'px'}">A</div>
+      <div
+        class="setting-wrapper"
+        v-show="ifSettingShow"
+      >
+        <div
+          class="setting-font-size"
+          v-if="showTag === 0"
+        >
+          <div
+            class="preview"
+            :style="{fontSize: fontSizeList[0].fontSize + 'px'}"
+          >
+            A
+          </div>
           <div class="select-wrapper">
-            <input type="range" class="select" :min="fontSizeList[0].fontSize" :max="fontSizeList[fontSizeList.length - 1].fontSize" step="2"
-                    @change="setFontSize($event.target.value)"
-                    :value="currentFontSize"
-                    :disabled="!$store.state.bookAvailable">
+            <input
+              type="range"
+              class="select"
+              :min="fontSizeList[0].fontSize"
+              :max="fontSizeList[fontSizeList.length - 1].fontSize"
+              step="2"
+              @change="setFontSize($event.target.value)"
+              :value="currentFontSize"
+              :disabled="!$store.state.bookAvailable"
+            >
           </div>
-          <div class="preview" :style="{fontSize: fontSizeList[fontSizeList.length - 1].fontSize + 'px'}">A</div>
-        </div>
-        <div class="setting-theme" v-else-if="showTag === 1">
-          <div class="setting-theme-item" v-for="(item, index) in themeList" :key="index" @click="setTheme(index)">
-            <div class="preview" :style="{background: item.style.body.background}" :class="{'no-border': item.style.body.background !=='#fff'}"></div>
-            <div class="text" :class="{'selected': index === defaultTheme}">{{item.name}}</div>
+          <div
+            class="preview"
+            :style="{fontSize: fontSizeList[fontSizeList.length - 1].fontSize + 'px'}"
+          >
+            A
           </div>
         </div>
-        <div class="setting-progress" v-else-if="showTag === 2">
+        <div
+          class="setting-theme"
+          v-else-if="showTag === 1"
+        >
+          <div
+            class="setting-theme-item"
+            v-for="(item, index) in themeList"
+            :key="index"
+            @click="setTheme(index)"
+          >
+            <div
+              class="preview"
+              :style="{background: item.style.body.background}"
+              :class="{'no-border': item.style.body.background !=='#fff'}"
+            />
+            <div
+              class="text"
+              :class="{'selected': index === defaultTheme}"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
+        <div
+          class="setting-progress"
+          v-else-if="showTag === 2"
+        >
           <div class="progress-wrapper">
-            <input type="range" class="progress" max="100" min="0" step="1"
-                    @change="onProgressChange($event.target.value)"
-                    @input="onProgressInput($event.target.value)"
-                    :value="progress"
-                    :disabled="!$store.state.bookAvailable"
-                    ref="progress">
+            <input
+              type="range"
+              class="progress"
+              max="100"
+              min="0"
+              step="1"
+              @change="onProgressChange($event.target.value)"
+              @input="onProgressInput($event.target.value)"
+              :value="progress"
+              :disabled="!$store.state.bookAvailable"
+              ref="progress"
+            >
           </div>
           <div class="text-wrapper">
-            <span>{{bookAvailable ? progress + '%' : $t('default.loading')}}</span>
+            <span>{{ bookAvailable ? progress + '%' : $t('default.loading') }}</span>
           </div>
         </div>
       </div>
     </transition>
-    <content-view :if-show-content="ifContentShow"
-                  v-show="ifContentShow"
-                  @jumpTo="jumpTo"
-                  @turnMarkPage="turnMarkPage"></content-view>
+    <content-view
+      :if-show-content="ifContentShow"
+      v-show="ifContentShow"
+      @jumpTo="jumpTo"
+      @turnMarkPage="turnMarkPage"
+    />
     <transition name="fade">
-      <div class="content-mask" v-show="ifContentShow" @click="hideContent"></div>
+      <div
+        class="content-mask"
+        v-show="ifContentShow"
+        @click="hideContent"
+      />
     </transition>
   </div>
 </template>
@@ -66,8 +137,18 @@ export default {
   name: 'MenuBar',
   components: {ContentView},
   props: {
-    themeList: Array,
-    fontSizeList: Array
+    themeList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
+    fontSizeList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
   },
   data () {
     return {

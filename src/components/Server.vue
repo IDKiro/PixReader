@@ -1,26 +1,57 @@
 <template>
   <div class="setting">
     <div class="toolbar">
-      <div>{{$t('setting.server')}}</div>
+      <div>{{ $t('setting.server') }}</div>
     </div>
     <div class="main-wrapper">
       <div class="main">
-        <input class="pix-input" v-for="(item, index) in server" :key="index" 
-          v-model="server[index].value" :placeholder="server[index].name" :type="server[index].type">  
+        <input
+          class="pix-input"
+          v-for="(item, index) in server"
+          :key="index" 
+          v-model="server[index].value"
+          :placeholder="server[index].name"
+          :type="server[index].type"
+        >  
         <div class="switch-wrapper">
           <div class="switch-container">
-            <input id="switch" type="checkbox" class="switch" v-model="useSSL.value"/>
-            <label for="switch" class="label" @click="changeSSL"></label>
+            <input
+              id="switch"
+              type="checkbox"
+              class="switch"
+              v-model="useSSL.value"
+            >
+            <label
+              for="switch"
+              class="label"
+              @click="changeSSL"
+            />
           </div>
-          <label>{{useSSL.name}}</label>  
+          <label>{{ useSSL.name }}</label>  
         </div>
         <div class="btn-group">
-          <button class="pix-btn" @click="apply">
-            <div v-show="iconShow === 0">{{$t('default.apply')}}</div>
-            <span class="icon-correct icon" v-show="iconShow === 1"></span>
-            <span class="icon-error icon" v-show="iconShow === 2"></span>
+          <button
+            class="pix-btn"
+            @click="apply"
+          >
+            <div v-show="iconShow === 0">
+              {{ $t('default.apply') }}
+            </div>
+            <span
+              class="icon-correct icon"
+              v-show="iconShow === 1"
+            />
+            <span
+              class="icon-error icon"
+              v-show="iconShow === 2"
+            />
           </button>
-          <button class="pix-btn" @click="reset">{{$t('default.reset')}}</button>
+          <button
+            class="pix-btn"
+            @click="reset"
+          >
+            {{ $t('default.reset') }}
+          </button>
         </div>
       </div>
     </div>

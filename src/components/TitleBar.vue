@@ -1,17 +1,34 @@
 <template>
   <transition name="slide-down">
-    <div class="title-wrapper" v-show="ifTitleAndMenuShow">
+    <div
+      class="title-wrapper"
+      v-show="ifTitleAndMenuShow"
+    >
       <div class="left">
-        <div class="icon-wrapper" @click="back">
-          <span class="icon-arrow-left icon"></span>
+        <div
+          class="icon-wrapper"
+          @click="back"
+        >
+          <span class="icon-arrow-left icon" />
         </div>
       </div>
-      <div class="right" v-if="bookAvailable">
-        <div class="icon-wrapper" v-if="!ifBookMarked" @click="addBookmark">
-          <span class="icon-bookmark icon"></span>
+      <div
+        class="right"
+        v-if="bookAvailable"
+      >
+        <div
+          class="icon-wrapper"
+          v-if="!ifBookMarked"
+          @click="addBookmark"
+        >
+          <span class="icon-bookmark icon" />
         </div>
-        <div class="icon-wrapper" v-else @click="removeBookmark">
-          <span class="icon-bookmark-on icon"></span>
+        <div
+          class="icon-wrapper"
+          v-else
+          @click="removeBookmark"
+        >
+          <span class="icon-bookmark-on icon" />
         </div>
       </div>
     </div>

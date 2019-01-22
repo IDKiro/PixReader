@@ -1,18 +1,36 @@
 <template>
   <div class="setting">
     <div class="toolbar">
-      <div>{{$t('setting.bucket')}}</div>
+      <div>{{ $t('setting.bucket') }}</div>
     </div>
     <div class="main-wrapper">
-      <div class="selectItem" v-for="item in buckets.items" :key="item.name" :class="{'selected': bucketName === item.name}" @click="selectBucket(item.name)">
+      <div
+        class="selectItem"
+        v-for="item in buckets.items"
+        :key="item.name"
+        :class="{'selected': bucketName === item.name}"
+        @click="selectBucket(item.name)"
+      >
         <div class="icon-wrapper">
-          <span class="icon-correct icon" v-show="bucketName === item.name"></span>
+          <span
+            class="icon-correct icon"
+            v-show="bucketName === item.name"
+          />
         </div>
-        <div class="text">{{item.name}}</div>
+        <div class="text">
+          {{ item.name }}
+        </div>
       </div>
       <div class="addItem">
-        <input class="pix-input" v-model="newBucket.value" :type="newBucket.type">  
-        <span :class="newBucket.icon" @click="addBucket(newBucket.value)"></span>
+        <input
+          class="pix-input"
+          v-model="newBucket.value"
+          :type="newBucket.type"
+        >  
+        <span
+          :class="newBucket.icon"
+          @click="addBucket(newBucket.value)"
+        />
       </div>
     </div>
   </div>

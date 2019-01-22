@@ -1,33 +1,52 @@
 <template>
   <div class="ebook">
-    <title-bar @addBookmark="addBookmark"
-               @removeBookmark="removeBookmark"></title-bar>
-    <div class="loading" v-if="!bookReady">
+    <title-bar
+      @addBookmark="addBookmark"
+      @removeBookmark="removeBookmark"
+    />
+    <div
+      class="loading"
+      v-if="!bookReady"
+    >
       <div class="spinner">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
+        <div class="rect1" />
+        <div class="rect2" />
+        <div class="rect3" />
+        <div class="rect4" />
+        <div class="rect5" />
       </div>
     </div>
-    <div class="read-wrapper" v-else>
-      <div id="read"></div>
+    <div
+      class="read-wrapper"
+      v-else
+    >
+      <div id="read" />
       <div class="mask">
-        <div class="left" @click="prevpage"></div>
-        <div class="center" @click="toggleTitleAndMenu"></div>
-        <div class="right" @click="nextpage"></div>
+        <div
+          class="left"
+          @click="prevpage"
+        />
+        <div
+          class="center"
+          @click="toggleTitleAndMenu"
+        />
+        <div
+          class="right"
+          @click="nextpage"
+        />
       </div>
     </div>
-    <menu-bar :themeList="themeList"
-              :fontSizeList="fontSizeList"
-              @setFontSize="setFontSize"
-              @setTheme="setTheme"
-              @onProgressChange="onProgressChange"
-              @getCurrentLocation="getCurrentLocation"
-              @jumpTo="jumpTo"
-              @turnMarkPage="turnMarkPage"
-              ref="menuBar"></menu-bar>
+    <menu-bar
+      :theme-list="themeList"
+      :font-size-list="fontSizeList"
+      @setFontSize="setFontSize"
+      @setTheme="setTheme"
+      @onProgressChange="onProgressChange"
+      @getCurrentLocation="getCurrentLocation"
+      @jumpTo="jumpTo"
+      @turnMarkPage="turnMarkPage"
+      ref="menuBar"
+    />
   </div>
 </template>
 

@@ -1,55 +1,110 @@
 <template>
   <div class="guide">
-    <div class="setting-wrapper" v-if="ifServerShow">
-      <server class="setting"/>
+    <div
+      class="setting-wrapper"
+      v-if="ifServerShow"
+    >
+      <server class="setting" />
     </div>
-    <div class="setting-wrapper" v-if="ifBucketShow">
-      <bucket class="setting" @bucketSelected="syncBook"/>
+    <div
+      class="setting-wrapper"
+      v-if="ifBucketShow"
+    >
+      <bucket
+        class="setting"
+        @bucketSelected="syncBook"
+      />
     </div>
     <transition name="slide-right">
-      <div class="popup" v-show="ifPop">
-        <div class="changeTag" v-for="(item, index) in menuItem" :key="index" :class="{'selected': chooseTag === index}" @click="choose(index)">
-          <span :class="menuItem[index].icon"></span>
-          <div class="text">{{menuItem[index].title}}</div>
+      <div
+        class="popup"
+        v-show="ifPop"
+      >
+        <div
+          class="changeTag"
+          v-for="(item, index) in menuItem"
+          :key="index"
+          :class="{'selected': chooseTag === index}"
+          @click="choose(index)"
+        >
+          <span :class="menuItem[index].icon" />
+          <div class="text">
+            {{ menuItem[index].title }}
+          </div>
         </div>
         <div class="btn-group">
-          <button class="pix-round-btn" @click="showServer">
-            <span :class="serverSetting.icon"></span>
+          <button
+            class="pix-round-btn"
+            @click="showServer"
+          >
+            <span :class="serverSetting.icon" />
           </button>
-          <button class="pix-round-btn" @click="showBucket">
-            <span :class="bucketSetting.icon"></span>
+          <button
+            class="pix-round-btn"
+            @click="showBucket"
+          >
+            <span :class="bucketSetting.icon" />
           </button>
         </div>
       </div>
     </transition>
     <transition name="fade">
-      <div class="mask" v-show="ifMask" @click="hideMenu"></div>
+      <div
+        class="mask"
+        v-show="ifMask"
+        @click="hideMenu"
+      />
     </transition>
     <div class="sidebar">
-      <div class="changeTag" v-for="(item, index) in menuItem" :key="index" :class="{'selected': chooseTag === index}" @click="choose(index)">
-        <span :class="menuItem[index].icon"></span>
-        <div class="text">{{menuItem[index].title}}</div>
+      <div
+        class="changeTag"
+        v-for="(item, index) in menuItem"
+        :key="index"
+        :class="{'selected': chooseTag === index}"
+        @click="choose(index)"
+      >
+        <span :class="menuItem[index].icon" />
+        <div class="text">
+          {{ menuItem[index].title }}
+        </div>
       </div>
       <div class="btn-group">
-        <button class="pix-round-btn" @click="showServer">
-          <span :class="serverSetting.icon"></span>
+        <button
+          class="pix-round-btn"
+          @click="showServer"
+        >
+          <span :class="serverSetting.icon" />
         </button>
-        <button class="pix-round-btn" @click="showBucket">
-          <span :class="bucketSetting.icon"></span>
+        <button
+          class="pix-round-btn"
+          @click="showBucket"
+        >
+          <span :class="bucketSetting.icon" />
         </button>
       </div>
     </div>
     <div class="main-wrapper">
       <div class="topbar">
-        <div class="left" @click="showMenu">
-          <span class="icon-menu icon"></span>
+        <div
+          class="left"
+          @click="showMenu"
+        >
+          <span class="icon-menu icon" />
         </div>
-        <div class="title">{{menuItem[chooseTag].title}}</div>
+        <div class="title">
+          {{ menuItem[chooseTag].title }}
+        </div>
       </div>   
       <div class="main">
-        <local v-show="chooseTag === 2"/>
-        <upload v-show="chooseTag === 1"  @uploaded="syncBook"/>
-        <shelf v-show="chooseTag === 0" ref="shelf"/>
+        <local v-show="chooseTag === 2" />
+        <upload
+          v-show="chooseTag === 1"
+          @uploaded="syncBook"
+        />
+        <shelf
+          v-show="chooseTag === 0"
+          ref="shelf"
+        />
       </div>   
     </div>
   </div>

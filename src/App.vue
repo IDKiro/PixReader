@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <ebook v-if="ifShowBook"/>
-    <guide v-show="!ifShowBook"/>
+    <ebook v-if="ifShowBook" />
+    <guide v-show="!ifShowBook" />
   </div>
 </template>
 

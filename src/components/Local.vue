@@ -1,15 +1,27 @@
 <template>
   <div class="localFile">
-    <label class="localFileArea"
+    <label
+      class="localFileArea"
       ref="localFileArea"
       for="openfile"
       @drop.prevent="onDrop"
       @dragover.prevent="onDragover"
-      @dragleave.prevent="dragover = false">
-      <span class="icon-folder icon"></span>
-      <div class="text">{{$t('default.localMessage')}}</div>
+      @dragleave.prevent="dragover = false"
+    >
+      <span class="icon-folder icon" />
+      <div class="text">
+        {{ $t('default.localMessage') }}
+      </div>
     </label>
-    <input id="openfile" name="file" ref="localFile" type="file" accept="application/epub+zip" v-show="false" @change="open"/>
+    <input
+      id="openfile"
+      name="file"
+      ref="localFile"
+      type="file"
+      accept="application/epub+zip"
+      v-show="false"
+      @change="open"
+    >
   </div>
 </template>
 

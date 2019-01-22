@@ -1,15 +1,28 @@
 <template>
   <div class="uploader">
-    <label class="uploadArea"
+    <label
+      class="uploadArea"
       ref="uploadArea"
       for="uploadfile"
       @drop.prevent="onDrop"
       @dragover.prevent="onDragover"
-      @dragleave.prevent="dragover = false">
-      <span class="icon-upload icon"></span>
-      <div class="text">{{$t('default.uploadMessage')}}</div>
+      @dragleave.prevent="dragover = false"
+    >
+      <span class="icon-upload icon" />
+      <div class="text">
+        {{ $t('default.uploadMessage') }}
+      </div>
     </label>
-    <input id="uploadfile" name="file" ref="uploader" type="file" multiple="multiple" accept="application/epub+zip" v-show="false" @change="upload"/>
+    <input
+      id="uploadfile"
+      name="file"
+      ref="uploader"
+      type="file"
+      multiple="multiple"
+      accept="application/epub+zip"
+      v-show="false"
+      @change="upload"
+    >
   </div>
 </template>
 
