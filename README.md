@@ -1,23 +1,20 @@
 # PixReader
 
-[简体中文](./docs/README-zh.md)
+> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)
 
-> This app is under development, you can try the old [demo](http://book.idkiro.xyz/) first
+> 如果有需要，这是前期开发的[笔记](/docs/notebook/README.md)
 
-> There is the [notebook](/docs/notebook/README.md).
+## 应用截图
 
+![](./imgs/demo.gif)
 
-## Screenshot
+## 使用方法
 
-![](./docs/imgs/demo.gif)
+当前版本仅支持[minio](https://github.com/minio/minio)。
 
-## Usage
+输入下面的指令，在你的服务器上搭建私人 minio 对象存储服务。
 
-The current version only supports [minio](https://github.com/minio/minio)。
-
-Enter the following command to build your private minio OSS on your server.
-
-Use docker:
+Docker:
 
 ```
 docker run -p 9000:9000 --name minio1 \
@@ -28,7 +25,7 @@ docker run -p 9000:9000 --name minio1 \
   minio/minio server /data
 ```
 
-Or binary:
+Binary:
 
 ```
 wget https://dl.minio.io/server/minio/release/linux-amd64/minio
@@ -38,4 +35,15 @@ export MINIO_SECRET_KEY=password
 (./minio server ./data &)
 ```
 
-> You must change the username and password to your own.
+> 使用指令前请修改指令中的用户名和密码部分
+
+## TODO
+
+- [x] 移动设备支持
+- [x] 多语言支持
+- [ ] GitHub支持
+- [ ] 书籍分类和拖动
+- [ ] 主题设置
+- [ ] 偏好设置
+- [ ] 桌面应用
+- [ ] 移动应用
