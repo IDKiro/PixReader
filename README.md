@@ -1,12 +1,10 @@
 # PixReader
 
-> 应用还在开发中，这里提供初版的[demo](http://book.idkiro.xyz/)
-
-> 如果有需要，这是前期开发的[笔记](/docs/notebook/README.md)
+[Demo](http://book.idkiro.xyz/)
 
 ## 应用截图
 
-![](./imgs/demo.gif)
+![](./docs/imgs/demo.gif)
 
 ## 使用方法
 
@@ -36,6 +34,10 @@ export MINIO_SECRET_KEY=password
 ```
 
 > 使用指令前请修改指令中的用户名和密码部分
+
+## 其他
+
+[笔记](/docs/notebook/README.md)
 
 ## TODO
 
