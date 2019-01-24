@@ -40,7 +40,7 @@ export default {
       let fileObj = this.$refs.localFile.files
       let file = fileObj[0]
       let reader = new FileReader()
-      reader.addEventListener('load', () => {
+      reader.onload = () => {
         let arr = (new Uint8Array(reader.result)).subarray(0, 2)
         let header = ''
         for (let i = 0; i < arr.length; i++) {
@@ -51,7 +51,7 @@ export default {
           this.$store.commit('setShowBook', true)
           this.$store.commit('setLocalUrl', reader.result)
         }
-      }, false)
+      }
       if (file) {
         reader.readAsArrayBuffer(file)
       }

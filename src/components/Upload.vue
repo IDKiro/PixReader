@@ -87,7 +87,7 @@ export default {
     },
     loadCover (file) {
       let reader = new FileReader()
-      reader.addEventListener('load', () => {
+      reader.onload = () => {
         let arr = (new Uint8Array(reader.result)).subarray(0, 2)
         let header = ''
         for (let i = 0; i < arr.length; i++) {
@@ -104,7 +104,7 @@ export default {
             })
           })
         }
-      }, false)
+      }
       if (file) {
         reader.readAsArrayBuffer(file)
       }
